@@ -19,7 +19,7 @@ class App extends Component {
 
       <Tarjetas/>
 
-      <Buscar/>
+      {/* <Buscar/> */}
 
     </View>
   );
@@ -29,15 +29,15 @@ class App extends Component {
 const aestilo = StyleSheet.create({
   container: {
     flex: 1,
-    height: 90,
-    backgroundColor: 'white',
+    height: 100,
+    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
     fontSize: 20,
     fontWeight: "bold",
-    color: 'black',
+    color: 'white',
   }
 });
 
