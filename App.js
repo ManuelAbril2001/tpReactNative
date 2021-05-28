@@ -1,9 +1,16 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Buscar from './Buscar';
 import Tarjetas from './Tarjetas';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 class App extends Component {
+  constructor(){
+    super();
+  }
+
+  
   render(){
   return (
     <View style={aestilo.container}>
@@ -23,14 +30,14 @@ const aestilo = StyleSheet.create({
   container: {
     flex: 1,
     height: 90,
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
     fontSize: 20,
     fontWeight: "bold",
-    color: 'white',
+    color: 'black',
   }
 });
 

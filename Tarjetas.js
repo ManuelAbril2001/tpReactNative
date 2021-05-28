@@ -7,7 +7,7 @@ render(){
     return (
         <View style={testilo.container}> 
             <Text style={testilo.elimino}>X</Text>
-            <Text> <img src="./assets/icon.png" /></Text>
+            {/* <Text> <img src="./assets/icon.png" /></Text> */}
             <Text style={testilo.titulos}>Apellido</Text>
             <Text style={testilo.titulos}>Nombre</Text>
             <Text style={testilo.titulos}>Email</Text>

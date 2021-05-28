@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback } from 'rea
 class Buscar extends Component {
     render(){
     return (
-        <View> style={bestilo.container}
+        <View style={bestilo.container}> 
             <Text style={bestilo.text}>Buscar tarjetas</Text>
         </View>
     )
@@ -15,7 +15,7 @@ class Buscar extends Component {
 const bestilo = StyleSheet.create({
     container: {
       flex: 1,
-      height: 100,
+      height: 6,
       backgroundColor: 'blue',
       alignItems: 'center',
       justifyContent: 'center',
