@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback } from 'react-native';
-import Detalle from './Detalle';
+import { StyleSheet, Image, Text, View, TextInput, Alert, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 
 class Tarjetas extends Component {
     constructor(){
@@ -34,21 +33,24 @@ class Tarjetas extends Component {
         )  
     }
 
+    
+
 render(){
 const { error, isLoaded, items } = this.state;
 const datos = items.map(item => ( 
     <View key={item.login.uuid} style={testilo.tarjet}>
+      <TouchableOpacity onPress={() => Alert.alert("Mas detalles:" + item.name.first)}>
         <Text style={testilo.elimino}>Eliminar tarjeta</Text>
         <Text style={testilo.tarjet}> Nombre: {item.name.first} </Text> 
         <Text> Apellido: {item.name.last} </Text>
         <Text> Email: {item.email} </Text>
         <Text> Fecha de nacimiento: {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
-        {/* <Image source={item.picture.large} /> */}
+        <Image style={testilo.image} source={{uri: item.picture.thumbnail}}/>
+      </TouchableOpacity>
     </View>
 ))
 
       return (
-        
         <View style={testilo.container}> 
         <Text style={testilo.titulos}>PERSONAS</Text>
             {datos}
@@ -81,7 +83,11 @@ const testilo = StyleSheet.create({
     },
     tarjet: {
         color: 'brown',
-    }
+    },
+    image: {
+      width: 30,
+      height: 30,
+    },
   });
 
 export default Tarjetas;

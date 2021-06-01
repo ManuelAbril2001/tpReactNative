@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import Buscar from './Buscar';
-import Tarjetas from './Tarjetas';
+import Buscar from './components/Buscar';
+import Tarjetas from './components/Tarjetas';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 

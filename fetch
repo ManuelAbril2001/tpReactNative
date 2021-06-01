@@ -1,0 +1,9 @@
+const getUsersAsync = async()=> {
+      try{
+        let response = await fetch("https://randomuser.me/api/?results=4");
+        let json = await response.json();
+        return json.results;
+      }catch(error){
+        console.error(error);
+      }
+    }
