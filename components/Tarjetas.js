@@ -32,7 +32,15 @@ class Tarjetas extends Component {
           }
         )  
     }
+    // componentDidMount() {
+    //   getData()
+    //    .then(results =>{
+    //        console.log(results);
+    //        this.setSatet({items:results})
+    //    })
+    //  }
 
+    // PREGUNTAR A JOSE PQ ME TIRE ERROR EN EL AWAIT DEL FETCH
     
 
 render(){

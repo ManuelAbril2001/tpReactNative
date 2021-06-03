@@ -3,6 +3,18 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 import Buscar from './components/Buscar';
 import Tarjetas from './components/Tarjetas';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import ImportCards from './screens/ImportCards'
+
+// class App extends Component{
+
+//   render(){
+//     return(
+//       <ImportCards/>
+//     )
+//   }
+// }
+
+// export default App;
 
 
 class App extends Component {
