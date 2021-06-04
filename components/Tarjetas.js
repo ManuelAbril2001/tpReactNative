@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { StyleSheet, Image, Text, View, TextInput, Alert, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import {getData} from "../api/RandomUser"
 
 class Tarjetas extends Component {
     constructor(){
@@ -14,23 +15,17 @@ class Tarjetas extends Component {
   
   
     componentDidMount() {
-      fetch("https://randomuser.me/api/?results=4")
-        .then(res => res.json())
-        .then(
-          (data) => {
-              console.log(data)
+      
+     
+          async () => {
+              let data = await getData()
             this.setState({
               isLoaded: true,
               items: data.results
             });
-          },            
-          (error) => {
-            this.setState({
-              isLoaded: true,
-              error
-            });
-          }
-        )  
+          }           
+         
+        
     }
     // componentDidMount() {
     //   getData()
