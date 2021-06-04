@@ -21,28 +21,16 @@ class Tarjetas extends Component {
               isLoaded: true,
               items: data.results
             });
-          }           
-         
-        
+          }                 
     }
-    // componentDidMount() {
-    //   getData()
-    //    .then(results =>{
-    //        console.log(results);
-    //        this.setSatet({items:results})
-    //    })
-    //  }
-
-    // PREGUNTAR A JOSE PQ ME TIRE ERROR EN EL AWAIT DEL FETCH
-    
 
 render(){
 const { error, isLoaded } = this.state;
 const {item} = this.props
 return (
-        // <View style={testilo.container}> 
-      <View key={item.login.uuid} style={testilo.tarjet}>
+        <View key={item.login.uuid} style={testilo.tarjet}>
           <TouchableOpacity onPress={() => Alert.alert("Mas detalles:" + item.name.first)}>
+            {/* importar un modal */}
               <Text style={testilo.elimino}>Eliminar tarjeta</Text>
               <Text style={testilo.tarjet}> Nombre: {item.name.first} </Text> 
               <Text> Apellido: {item.name.last} </Text>
@@ -50,12 +38,9 @@ return (
               <Text> Fecha de nacimiento: {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
               <Image style={testilo.image} source={{uri: item.picture.thumbnail}}/>
           </TouchableOpacity>
-      </View>
-        // </View>
-       
+        </View>
     )
-
-    }
+  }
 }
 
 const testilo = StyleSheet.create({
@@ -73,7 +58,7 @@ const testilo = StyleSheet.create({
         color: 'red',
         textAlign: 'right',
     },
-    titulos:{
+    titulos: {
         fontSize: 20,
         fontWeight: "bold",
     },
