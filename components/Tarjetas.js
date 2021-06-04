@@ -15,9 +15,7 @@ class Tarjetas extends Component {
   
   
     componentDidMount() {
-      
-     
-          async () => {
+            async () => {
               let data = await getData()
             this.setState({
               isLoaded: true,
@@ -39,30 +37,25 @@ class Tarjetas extends Component {
     
 
 render(){
-const { error, isLoaded, items } = this.state;
-const datos = items.map(item => ( 
-    <View key={item.login.uuid} style={testilo.tarjet}>
-      <TouchableOpacity onPress={() => Alert.alert("Mas detalles:" + item.name.first)}>
-        <Text style={testilo.elimino}>Eliminar tarjeta</Text>
-        <Text style={testilo.tarjet}> Nombre: {item.name.first} </Text> 
-        <Text> Apellido: {item.name.last} </Text>
-        <Text> Email: {item.email} </Text>
-        <Text> Fecha de nacimiento: {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
-        <Image style={testilo.image} source={{uri: item.picture.thumbnail}}/>
-      </TouchableOpacity>
-    </View>
-))
-
-      return (
-        <View style={testilo.container}> 
-        <Text style={testilo.titulos}>PERSONAS</Text>
-            {datos}
-        </View>
+const { error, isLoaded } = this.state;
+const {item} = this.props
+return (
+        // <View style={testilo.container}> 
+      <View key={item.login.uuid} style={testilo.tarjet}>
+          <TouchableOpacity onPress={() => Alert.alert("Mas detalles:" + item.name.first)}>
+              <Text style={testilo.elimino}>Eliminar tarjeta</Text>
+              <Text style={testilo.tarjet}> Nombre: {item.name.first} </Text> 
+              <Text> Apellido: {item.name.last} </Text>
+              <Text> Email: {item.email} </Text>
+              <Text> Fecha de nacimiento: {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
+              <Image style={testilo.image} source={{uri: item.picture.thumbnail}}/>
+          </TouchableOpacity>
+      </View>
+        // </View>
        
     )
 
     }
-    // }
 }
 
 const testilo = StyleSheet.create({
