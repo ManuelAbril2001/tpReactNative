@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback } from 'react-native';
-
+import {buscar} from '../Estilo/Styles';
 
 export class Buscar extends Component {
     render(){
         return (
-            <View style={styles.container}>
+            <View style={buscar.container}>
 
-             <Text style={styles.titulo}>Buscar</Text>
-             <Text style={styles.texto} onPress={ () => this.props.navigation.goBack()} >
-                Go back! </Text>
+             <Text style={buscar.titulo}>Buscar</Text>
+             <Text style={buscar.texto} onPress={ () => this.props.navigation.goBack()} >
+             Volver atras </Text>
 
             </View>
 
@@ -17,18 +17,3 @@ export class Buscar extends Component {
 
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    titulo: {
-        fontSize: 30,
-        color: 'blue',
-       },
-    texto: {
-       fontSize: 20,
-   },
-})
