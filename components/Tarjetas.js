@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Image, Text, View, TextInput, Alert, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, Text, View, TextInput, Alert, TouchableWithoutFeedback, TouchableOpacity, Button, Modal } from 'react-native';
 import {getData} from "../api/RandomUser";
 
 class Tarjetas extends Component {
@@ -10,6 +10,7 @@ class Tarjetas extends Component {
         isLoaded: false,
         numero: "",
         items: [],
+        showModal: false,
       } 
     }
   
@@ -36,9 +37,19 @@ return (
               <Image style={testilo.image} source={{uri: item.picture.thumbnail}}/>
               <Text style={testilo.tarjet}> Nombre: {item.name.first} </Text> 
               <Text> Apellido: {item.name.last} </Text>
+
+          </TouchableOpacity>
+
+            <Button title="cargar detalles" onPress={()=> this.setState({showModal: !this.state.showModal})}>  </Button>
+
+          <Modal visible={this.state.showModal}
+          animationType="slide">
+
               <Text> Email: {item.email} </Text>
               <Text> Fecha de nacimiento: {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
-          </TouchableOpacity>
+              <Button title="go back!" onPress={()=> this.setState({showModal: !this.state.showModal})}> Go back!</Button>
+
+          </Modal>
           </View>
         </View>
     )
