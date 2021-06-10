@@ -37,6 +37,8 @@ return (
               <Image style={testilo.image} source={{uri: item.picture.thumbnail}}/>
               <Text style={testilo.tarjet}> Nombre: {item.name.first} </Text> 
               <Text> Apellido: {item.name.last} </Text>
+              <Text style={testilo.detalle}> Email: {item.email} </Text>
+              <Text style={testilo.detalle}> Fecha de nacimiento: {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
 
           </TouchableOpacity>
 
@@ -44,11 +46,16 @@ return (
 
           <Modal visible={this.state.showModal}
           animationType="slide">
+              <View style={testilo.tarjet}>
 
-              <Text> Email: {item.email} </Text>
-              <Text> Fecha de nacimiento: {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
+              <Text style={testilo.detalle}>Calle y Número: {item.location.street.number}</Text>
+            <Text style={testilo.detalle}>Ciudad/Estado: {item.location.street.number}</Text>
+            <Text style={testilo.detalle}>País: {item.location.country}</Text>
+            <Text style={testilo.detalle}>Código postal: {item.location.country}</Text>
+            <Text style={testilo.detalle}>Fecha de Registro: {item.registered.date.substring(0,10)}</Text>
+            <Text style={testilo.detalle}>Teléfono: {item.phone}</Text>
               <Button title="go back!" onPress={()=> this.setState({showModal: !this.state.showModal})}> Go back!</Button>
-
+              </View>
           </Modal>
           </View>
         </View>
@@ -78,6 +85,9 @@ const testilo = StyleSheet.create({
     tarjet: {
         color: 'brown',
         marginTop: 30,
+    },
+    detalle:{
+      marginTop: 20,
     },
     image: {
       width: 30,
