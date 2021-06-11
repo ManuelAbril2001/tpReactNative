@@ -6,16 +6,15 @@ export class Home extends Component {
     render(){
         return (
             <View style={home.containerHome}>
-
-                <Text style={home.titulos}>INICIO</Text>
-                <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Tarjetas')}>
-                    Ver tarjetas
+                <Text style={home.titulos}>Inicio</Text>
+                <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Contactos')}>
+                    Ver contactos
                 </Text>
                 <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Importar')}>
-                    Importar tarjetas
+                    Importar contactos
                 </Text>
                 <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Buscar')}>
-                    Buscar/Modificar tarjetas
+                    Buscar/Modificar contactos
                 </Text>
                 <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Papelera')}>
                     Papelera de reciclaje

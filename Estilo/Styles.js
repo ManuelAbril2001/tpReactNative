@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 const home = StyleSheet.create({
     containerHome: {
         justifyContent: 'center',
-        marginTop: 200,
+        marginTop: 250,
         alignItems: 'center',
     },
     titulos: {
@@ -12,6 +12,7 @@ const home = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         marginBottom: 10,
+        textDecorationLine: 'underline',
     },
     texto: {
         fontSize: 20,
@@ -19,31 +20,47 @@ const home = StyleSheet.create({
         marginTop: 5,
     },
     footer: {
-        marginTop: 250,
+        marginTop: 300,
         color: 'grey',
     },
 })
 
 const tarjet = StyleSheet.create({
+    todo:{
+        justifyContent: 'center',
+    },
+    flat:{
+        height: '80%',
+        width: '100%',
+    },
     container:{
         justifyContent: 'center',
-        alignItems: 'center',
+        marginBottom: 20,
     },
     tarjeta: {
         marginTop: 10,
+        marginRight: 7,
         borderBottomWidth: 1,
         borderColor: 'black',
     },
     contenido: {
         justifyContent: 'center',
-        alignItems: 'center',
     },
     titulo: {
         justifyContent: 'center',
+        textAlign: 'center',
+        fontStyle: 'italic',
         color: 'green',
         fontSize: 25,
         fontWeight: 'bold',
-        marginBottom: 10,
+        marginBottom: 5,
+        marginTop: 60,
+        flex: 1,
+        width: '100%',
+        height: '12%',
+    },
+    interior: {
+        fontStyle: 'italic',
     },
     eliminar: {
         fontSize: 15,
@@ -55,7 +72,11 @@ const tarjet = StyleSheet.create({
         width: 120,
         height: 120,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignSelf: 'center',
+        borderRadius: 100,
+        borderWidth: 1,
+        borderColor: 'black',
+        marginBottom: 10,
     },
     detalle: {
         textAlign: 'center',
@@ -67,7 +88,26 @@ const tarjet = StyleSheet.create({
         marginBottom: 5,
     },
     verdetalle: {
-        marginTop: 60,
+        marginTop: 250,
+        margin: 5,
+        borderWidth: 2,
+        borderColor: 'black',
+        justifyContent: 'center',
+        textAlign: 'center',
+    },
+    atras: {
+        color: 'orange',
+        textAlign: 'right',
+        flex: 1,
+        width: '100%',
+        height: '3%',
+    },
+    boton: {
+        textAlign: 'center',
+        margin: 4,
+        color: 'purple',
+        fontSize: 15,
+        fontWeight: '500',
     },
 })
 
@@ -98,6 +138,7 @@ const buscar = StyleSheet.create({
     },
     titulo: {
         justifyContent: 'center',
+        alignItems: 'center',
         color: 'green',
         fontSize: 25,
         fontWeight: 'bold',
