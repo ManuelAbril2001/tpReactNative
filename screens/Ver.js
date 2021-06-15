@@ -10,7 +10,7 @@ import{
 } from 'react-native';
 import Tarjetas from '../components/Tarjetas';
 import {getData} from '../api/RandomUser';
-import {tarjet} from '../Estilo/Styles';
+import {tarjet, home} from '../Estilo/Styles';
 
 class ImportCards extends Component {
     constructor(){
@@ -40,15 +40,26 @@ fetchAPI(numero) {
 
 render(){
     return (
+    <View style={home.padre}>
+            <View style={home.lineaboton}>
+                    <TouchableOpacity onPress={ () => this.props.navigation.openDrawer()}>
+                        <Text style={home.lineatexto}>
+                         ≡
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+       
     <View style={tarjet.todo}>
-        <Text style={tarjet.titulo}>Tus contactos</Text>
+        <Text style={tarjet.titulo}>Tus contactos:</Text>
 
-        <TextInput placeholder='Cuantas tarjetas queres importar' onChangeText={ (text) => this.fetchAPI(text)} /> 
+        <TextInput style={{textAlign: 'center'}} placeholder='¿Cuantos contactos queres importar?' keyboardType="numeric"  onChangeText={ (text) => this.fetchAPI(text)}/> 
+        
 
         <View style={tarjet.flat}>
             <FlatList data={this.state.items} renderItem={this.renderItem} keyExtractor={this.keyExtractor}> </FlatList>
         </View>
         <Text style={tarjet.atras} onPress={ () => this.props.navigation.goBack()}> Volver atras </Text>
+    </View>
     </View>
     )
 

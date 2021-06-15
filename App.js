@@ -5,11 +5,12 @@ import {NavigationContainer} from '@react-navigation/native';
 // import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import ImportCards from './screens/ImportCards';
+import Ver from './screens/Ver';
 import {Home} from './screens/Home';
 import {Papelera} from './screens/Papelera';
 import {Importar} from './screens/Importar';
 import {Buscar} from './screens/Buscar';
+import {Acercade} from './screens/Acercade';
 
 // const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -48,10 +49,11 @@ class App extends Component{
                 }}
               >
             <Drawer.Screen name="Home" component={Home}/>
-            <Drawer.Screen name="Contactos" component={ImportCards}/>
-            <Drawer.Screen name="Papelera" component={Papelera}/>
+            <Drawer.Screen name="Contactos" component={Ver}/>
             <Drawer.Screen name="Importar" component={Importar}/>
             <Drawer.Screen name="Buscar" component={Buscar}/>
+            <Drawer.Screen name="Papelera" component={Papelera}/>
+            <Drawer.Screen name="Acerca de..." component={Acercade}/>
           </Drawer.Navigator>
         
         </NavigationContainer>

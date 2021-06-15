@@ -1,6 +1,9 @@
 import {StyleSheet} from 'react-native';
 
 const home = StyleSheet.create({
+    padre:{
+        justifyContent: 'center',
+    },
     containerHome: {
         justifyContent: 'center',
         marginTop: 250,
@@ -20,14 +23,30 @@ const home = StyleSheet.create({
         marginTop: 5,
     },
     footer: {
-        marginTop: 300,
+        marginTop: 350,
         color: 'grey',
+    },
+    lineaboton: {
+        width: 50,
+        height: 40,
+        backgroundColor: 'orange',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        position: 'absolute',
+        left: 10,
+        bottom: 600,
+    },
+    lineatexto: {
+        color: 'white',
+        fontSize: 25,
     },
 })
 
 const tarjet = StyleSheet.create({
     todo:{
         justifyContent: 'center',
+        top: 70,
     },
     flat:{
         height: '80%',
@@ -54,7 +73,7 @@ const tarjet = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
         marginBottom: 5,
-        marginTop: 60,
+        marginTop: 25,
         flex: 1,
         width: '100%',
         height: '12%',
@@ -88,10 +107,8 @@ const tarjet = StyleSheet.create({
         marginBottom: 5,
     },
     verdetalle: {
-        marginTop: 250,
-        margin: 5,
-        borderWidth: 2,
-        borderColor: 'black',
+        marginTop: 200,
+        margin: 7,
         justifyContent: 'center',
         textAlign: 'center',
     },
@@ -127,6 +144,9 @@ const papelera = StyleSheet.create({
     texto: {
        fontSize: 20,
    },
+   atras: {
+    color: 'orange',
+    },      
 })
 
 
@@ -147,6 +167,9 @@ const buscar = StyleSheet.create({
     texto: {
        fontSize: 20,
    },
+   atras: {
+    color: 'orange',
+},
 })
 
 
@@ -166,6 +189,57 @@ const importar = StyleSheet.create({
     texto: {
        fontSize: 20,
    },
+   atras: {
+    color: 'orange',
+},
 })
 
-export {home, tarjet, papelera, buscar, importar}
+const acerca = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    todo: {
+       marginRight: 2,
+       marginLeft: 2,
+    },
+    titulo: {
+        justifyContent: 'center',
+        color: 'green',
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    texto: {
+       fontSize: 15,
+       marginBottom: 9,
+   },
+   atras: {
+      color: 'orange',
+      textAlign: 'right',
+      marginTop: 100,
+      marginLeft: 120,
+    },
+    interior: {
+        fontWeight: 'bold',
+    },
+    lineaboton: {
+        width: 50,
+        height: 40,
+        backgroundColor: 'orange',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        position: 'absolute',
+        left: 10,
+        top: 60,
+        bottom: 600,
+    },
+    lineatexto: {
+        color: 'white',
+        fontSize: 25,
+    },
+})
+
+export {home, tarjet, papelera, buscar, importar, acerca}
