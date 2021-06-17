@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {Component} from 'react';
 import { StyleSheet, Image, Text,  Animated, Easing, View, TextInput, Alert, TouchableWithoutFeedback, TouchableOpacity, Separator, Button, Modal } from 'react-native';
 import {getData} from "../api/RandomUser";
@@ -13,8 +14,13 @@ class Tarjetas extends Component {
         items: [],
         showModal: false,
         toValue: 1,
+        tarjetaSeleccionada: [],
+        seleccionados: [],
+        fav:[]
+
       }
   }
+ 
 
   resize = new Animated.Value(0.8);
 
@@ -27,6 +33,31 @@ class Tarjetas extends Component {
       }).start();
       this.setState({toValue: this.state.toValue==0.8? 1 : 0.8})
   }
+
+//   async importadas(){
+//     try{
+//       const result = await AsyncStorage.getItem('fav')
+//       this.setState({tarjetaSeleccionada: JSON.parse(result)})
+//     } catch(e){
+//       console.log(e);
+//     }
+    
+  
+
+//   agregarAseleccion = (item) =>{
+//     let seleccionadosConcat = this.state.seleccionados.concat(item)
+//     this.setState({seleccionados:seleccionadosConcat})
+//     console.log(this.state.seleccionados.length);
+//   }
+
+//   quitarSeleccion = (idTarjeta) => {
+//     let resultado = this.state.seleccionados.filter((item)=>{
+//       return item.login.uuid !== idTarjeta;
+//     })
+//     this.setState({seleccionados:resultado})
+//     console.log(this.state.seleccionados.length);
+//   }
+// }
  
 render(){
 const { error, isLoaded } = this.state;
@@ -40,7 +71,9 @@ return (
               <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Nombre: </Text>{item.name.first} </Text> 
               <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Apellido: </Text>{item.name.last} </Text>
               <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Email: </Text> {item.email} </Text>
-              <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Fecha de nacimiento: </Text> {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
+              {/* <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Fecha de nacimiento: </Text> {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
+              <Text onPress={this.props.agregarAseleccion.bind(this, this.props.item)}> Seleccionar </Text>
+              <Text onPress={this.props.quitarSeleccion.bind(this, this.props.item.login.uuid)}> Quitar seleccion </Text> */}
             <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver detalle del contacto </Text>
           </View>
 
