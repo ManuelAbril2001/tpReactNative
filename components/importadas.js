@@ -5,6 +5,32 @@ import {getData} from "../api/RandomUser";
 import {tarjet} from '../Estilo/Styles';
 
 class Importadas extends Component{
+    constructor(){
+        super()
+        this.state={
+            fav: []
+        }
+    }
+
+    componenDidMount(){
+        this.getDataimportados
+    }
+
+    keyExtractor = (item,idx) => idx.toString();
+    renderItem= ({item}) => {
+    return(
+        <Tarjetas item={item}  quitarSeleccion={this.quitarSeleccion} />
+    )
+}
+
+async getDataimportados(){
+    try{
+        const result = await AsyncStorage.getItem('fav')
+        this.setState({seleccionadasPrevias: JSON.parse(result)})
+    } catch(e){
+        console.log(e);
+    }
+}
     
 
 }

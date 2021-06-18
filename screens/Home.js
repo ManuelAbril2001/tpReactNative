@@ -47,7 +47,7 @@ export class Home extends Component {
                         Ver mis contactos
                     </Text>
                     <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Importar')}>
-                        Importar contactos
+                         Contactos importados
                     </Text>
                     <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Buscar')}>
                         Buscar/Modificar contactos

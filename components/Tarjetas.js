@@ -46,6 +46,31 @@ componentDidMount() {
   quitar(id) {
     this.props.quitarSeleccion(id)
   }
+
+  async favoritos(){
+    try{
+        this.importadas();
+        const fav = [...this.state.seleccionadasPrevias, ...this.state.seleccionados]
+
+        console.log(fav.length);
+   
+
+        const jsonUsers = JSON.stringify(fav);
+
+        const seleccionadosLength = "se importaron" + this.state.seleccionados.length + "tarjetas seleccionados"
+        await AsyncStorage.setItem('fav', jsonUsers)
+        if(this.state.seleccionados.length != 0){
+        this.quitar(this.state.seleccionados, this.state.personas)
+        Alert.alert(seleccionadosLength)}
+        else{
+            Alert.alert('No se selecciono ninguna rey')
+        }
+        this.setState({seleccionados: []})
+    }catch(e){
+        console.log(e);
+    }
+}
+
  
 render(){
 const { error, isLoaded } = this.state;
