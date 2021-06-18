@@ -19,10 +19,14 @@ class Tarjetas extends Component {
         fav:[]
 
       }
+      this.agregar = this.agregar.bind(this)
+      this.quitar = this.quitar.bind(this)
   }
 
 
-
+componentDidMount() {
+  console.log(this.props)
+}
   resize = new Animated.Value(0.8);
 
   toSize = () => {
@@ -35,13 +39,18 @@ class Tarjetas extends Component {
       this.setState({toValue: this.state.toValue==0.8? 1 : 0.8})
   }
 
-  llamar (item){
-    this.props.agregarAseleccion(item)
+  agregar (item){
+    this.props.agregarAseleccion(item);
+  }
+
+  quitar(id) {
+    this.props.quitarSeleccion(id)
   }
  
 render(){
 const { error, isLoaded } = this.state;
-const {item} = this.props
+const {item} = this.props;
+
 return (
         <View key={item.login.uuid} style={tarjet.container}>
           <View style={tarjet.tarjeta}>
@@ -53,8 +62,8 @@ return (
               <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Email: </Text> {item.email} </Text>
               <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Fecha de nacimiento: </Text> {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
 
-              <Text style={tarjet.detalle} onPress={ () => this.llamar(item)}> Seleccionar </Text>
-              {/* <Text style={tarjet.detalle} style={tarjet.detalle}onPress={()=>this.props.quitarSeleccion( this.props.item.login.uuid)}> Quitar seleccion </Text> */}
+              <TouchableOpacity  onPress={ () => this.agregar(item)}><Text style={tarjet.detalle}> Seleccionar </Text></TouchableOpacity>
+              <TouchableOpacity  onPress={ () => this.quitar(item.login.uuid)}><Text style={tarjet.detalle} style={tarjet.detalle}> Quitar seleccion </Text></TouchableOpacity>
 
             <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver detalle del contacto </Text>
           </View>

@@ -23,40 +23,40 @@ class ImportCards extends Component {
             fav:[]
 
         }
+        this.agregarAseleccion = this.agregarAseleccion.bind(this);
+        this.quitarSeleccion = this.quitarSeleccion.bind(this);
     }
 
 
 keyExtractor = (item,idx) => idx.toString();
 renderItem= ({item}) => {
     return(
-        <Tarjetas item={item} agregarAseleccion={this.agregarAseleccion} quitarSeleccion={ this.quitarSeleccion} />
+        <Tarjetas item={item} agregarAseleccion={this.agregarAseleccion} quitarSeleccion={this.quitarSeleccion} />
     )
 }
 
-test(){
-    console.log("hola");
-}
 
-fetchAPI(numero) {
+    fetchAPI(numero) {
     getData(numero)
      .then(results =>{
-         console.log(results);
          this.setState({items:results})
      })
    }
 
    async importadas(){
-    try{
-      const result = await AsyncStorage.getItem('fav')
-      this.setState({seleccionadasPrevias: JSON.parse(result)})
-    } catch(e){
-      console.log(e);
+        try{
+            const result = await AsyncStorage.getItem('fav')
+            this.setState({seleccionadasPrevias: JSON.parse(result)})
+        } catch(e){
+            console.log(e);
+        }
     }
-
-  agregarAseleccion = (item) =>{
-    let seleccionadosConcat = this.state.seleccionados.concat(item)
-    this.setState({seleccionados:seleccionadosConcat})
-    console.log(this.state.seleccionados.length);
+    
+  agregarAseleccion(item){
+      let seleccion = this.state.seleccionados;
+      seleccion.push(item);
+      this.setState({seleccionados:seleccion});
+        console.log(seleccion)
   }
 
   quitarSeleccion = (idTarjeta) => {
@@ -64,8 +64,7 @@ fetchAPI(numero) {
       return item.login.uuid !== idTarjeta;
     })
     this.setState({seleccionados:resultado})
-    console.log(this.state.seleccionados.length);
-  }
+    console.log(resultado);
    }
 
 async favoritos(){
