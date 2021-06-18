@@ -18,6 +18,10 @@ class ImportCards extends Component {
         this.state = {
             items: [],
             numero: "",
+            seleccionadasPrevias: [],
+            seleccionados: [],
+            fav:[]
+
         }
     }
 
@@ -25,8 +29,12 @@ class ImportCards extends Component {
 keyExtractor = (item,idx) => idx.toString();
 renderItem= ({item}) => {
     return(
-        <Tarjetas item={item} />
+        <Tarjetas item={item} agregarAseleccion={this.agregarAseleccion} quitarSeleccion={ this.quitarSeleccion} />
     )
+}
+
+test(){
+    console.log("hola");
 }
 
 fetchAPI(numero) {
@@ -36,6 +44,51 @@ fetchAPI(numero) {
          this.setState({items:results})
      })
    }
+
+   async importadas(){
+    try{
+      const result = await AsyncStorage.getItem('fav')
+      this.setState({seleccionadasPrevias: JSON.parse(result)})
+    } catch(e){
+      console.log(e);
+    }
+
+  agregarAseleccion = (item) =>{
+    let seleccionadosConcat = this.state.seleccionados.concat(item)
+    this.setState({seleccionados:seleccionadosConcat})
+    console.log(this.state.seleccionados.length);
+  }
+
+  quitarSeleccion = (idTarjeta) => {
+    let resultado = this.state.seleccionados.filter((item)=>{
+      return item.login.uuid !== idTarjeta;
+    })
+    this.setState({seleccionados:resultado})
+    console.log(this.state.seleccionados.length);
+  }
+   }
+
+async favoritos(){
+    try{
+        this.importadas();
+        const fav = [...this.state.seleccionadasPrevias, ...this.state.seleccionados]
+   
+
+        const jsonUsers = JSON.stringify(fav);
+
+        const seleccionadosLength = "se importaron" + this.state.seleccionados.length + "tarjetas seleccionados"
+        await AsyncStorage.setItem('fav', jsonUsers)
+        if(this.state.seleccionados.length != 0){
+        this.quitarSeleccion(this.state.seleccionados, this.state.personas)
+        Alert.alert(seleccionadosLength)}
+        else{
+            Alert.alert('No se selecciono ninguna rey')
+        }
+        this.setState({seleccionados: []})
+    }catch(e){
+        console.log(e);
+    }
+}
 
 
 render(){
