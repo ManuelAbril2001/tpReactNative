@@ -13,24 +13,37 @@ class Importadas extends Component{
     }
 
     componenDidMount(){
-        this.getDataimportados
+        this.getDataimportados()
     }
 
-    keyExtractor = (item,idx) => idx.toString();
-    renderItem= ({item}) => {
-    return(
-        <Tarjetas item={item}  quitarSeleccion={this.quitarSeleccion} />
-    )
-}
-
-async getDataimportados(){
+    async favoritos(){
     try{
-        const result = await AsyncStorage.getItem('fav')
-        this.setState({seleccionadasPrevias: JSON.parse(result)})
-    } catch(e){
+        this.importadas();
+        const fav = [...this.state.seleccionadasPrevias, ...this.state.seleccionados]
+
+        console.log(fav.length);
+   
+
+        const jsonUsers = JSON.stringify(fav);
+
+        const seleccionadosLength = "se importaron" + this.state.seleccionados.length + "tarjetas seleccionados"
+        await AsyncStorage.setItem('fav', jsonUsers)
+        if(this.state.seleccionados.length != 0){
+        // this.quitar(this.state.seleccionados, this.state.personas)
+        console.log('se guarda');
+        }
+        else{
+            console.log('no se guarda');
+        }
+        this.setState({seleccionados: []})
+    }catch(e){
         console.log(e);
     }
 }
+
+   
+
+
     
 
 }

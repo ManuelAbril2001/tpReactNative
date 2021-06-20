@@ -20,7 +20,7 @@ class Tarjetas extends Component {
 
       }
       this.agregar = this.agregar.bind(this)
-      this.quitar = this.quitar.bind(this)
+
   }
 
 
@@ -43,33 +43,7 @@ componentDidMount() {
     this.props.agregarAseleccion(item);
   }
 
-  quitar(id) {
-    this.props.quitarSeleccion(id)
-  }
 
-  async favoritos(){
-    try{
-        this.importadas();
-        const fav = [...this.state.seleccionadasPrevias, ...this.state.seleccionados]
-
-        console.log(fav.length);
-   
-
-        const jsonUsers = JSON.stringify(fav);
-
-        const seleccionadosLength = "se importaron" + this.state.seleccionados.length + "tarjetas seleccionados"
-        await AsyncStorage.setItem('fav', jsonUsers)
-        if(this.state.seleccionados.length != 0){
-        this.quitar(this.state.seleccionados, this.state.personas)
-        Alert.alert(seleccionadosLength)}
-        else{
-            Alert.alert('No se selecciono ninguna rey')
-        }
-        this.setState({seleccionados: []})
-    }catch(e){
-        console.log(e);
-    }
-}
 
  
 render(){
@@ -88,8 +62,7 @@ return (
               <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Fecha de nacimiento: </Text> {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
 
               <TouchableOpacity  onPress={ () => this.agregar(item)}><Text style={tarjet.boton}> Agregar a favoritos </Text></TouchableOpacity>
-              <TouchableOpacity  onPress={ () => this.quitar(item.login.uuid)}><Text style={tarjet.boton}> Quitar seleccion </Text></TouchableOpacity>
-
+              
             <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver detalle del contacto </Text>
           </View>
 

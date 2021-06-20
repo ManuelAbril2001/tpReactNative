@@ -5,15 +5,38 @@ import  Importadas from '../components/Importadas';
 import  Ver from './Ver';
 
 export class Importar extends Component {
-
-    componentDidMount(){
-        this.importadas();
+    constructor(){
+        super()
+        this.state={
+            fav: []
+        }
     }
+
+    componenDidMount(){
+        this.getDataimportados()
+    }
+
+    async getDataimportados(){
+        try{
+            const result = await AsyncStorage.getItem('fav')
+            this.setState({seleccionadasPrevias: JSON.parse(result)})
+            console.log('se guarda');
+        } catch(e){
+            console.log(e);
+        }
+    }
+
+    keyExtractor = (item,idx) => idx.toString();
+    renderItem= ({item}) => {
+    return(
+        <Importadas item={item} />
+    )
+}
 
 
     render(){
 
-        const {seleccionadasPrevias, seleccionados} = this.state;
+  
 
         return (
             <View style={importar.container}>
@@ -27,7 +50,7 @@ export class Importar extends Component {
 
              <Text style={importar.titulo}>Contactos favoritos</Text>
 
-        <Text> {seleccionadasPrevias} </Text>
+        
 
 
              <Text style={importar.atras} onPress={ () => this.props.navigation.goBack()} >
