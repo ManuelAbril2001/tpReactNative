@@ -55,17 +55,17 @@ export class Home extends Component {
                     <TouchableOpacity style={{flex:1}} onPress={this.topDown}>
                     <Text style={home.titulo}
                     //  onPress={this.desplegarMenu}
-                     >Desplegar menu</Text>
-                    <Text style={{display: "none"}} onPress={ () => this.props.navigation.navigate('Contactos')}>
+                     >Mover menu</Text>
+                    <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Contactos')}>
                         Todos los contactos
                     </Text>
-                    <Text style={{display: "none"}} onPress={ () => this.props.navigation.navigate('Favoritos')}>
+                    <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Favoritos')}>
                          Favoritos
                     </Text>
-                    <Text style={{display: "none"}} onPress={ () => this.props.navigation.navigate('Buscar')}>
+                    <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Buscar')}>
                         Buscar/Modificar contactos
                     </Text>
-                    <Text style={{display: "none"}} onPress={ () => this.props.navigation.navigate('Papelera')}>
+                    <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Papelera')}>
                         Papelera de reciclaje
                     </Text>
                 </TouchableOpacity>

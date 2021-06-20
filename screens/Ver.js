@@ -45,12 +45,13 @@ class ImportCards extends Component {
 
    async importadas(){
         try{
-            const result = await AsyncStorage.getItem('fav')
+            const result = await AsyncStorage.getItem('fav') // clave
             this.setState({seleccionadasPrevias: JSON.parse(result)})
         } catch(e){
             console.log(e);
         }
     }
+
     
     agregarAseleccion(item){
         let seleccion = this.state.seleccionados;
