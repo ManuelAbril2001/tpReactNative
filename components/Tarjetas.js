@@ -87,8 +87,8 @@ return (
               <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Email: </Text> {item.email} </Text>
               <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Fecha de nacimiento: </Text> {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
 
-              <TouchableOpacity  onPress={ () => this.agregar(item)}><Text style={tarjet.detalle}> Seleccionar </Text></TouchableOpacity>
-              <TouchableOpacity  onPress={ () => this.quitar(item.login.uuid)}><Text style={tarjet.detalle} style={tarjet.detalle}> Quitar seleccion </Text></TouchableOpacity>
+              <TouchableOpacity  onPress={ () => this.agregar(item)}><Text style={tarjet.boton}> Agregar a favoritos </Text></TouchableOpacity>
+              <TouchableOpacity  onPress={ () => this.quitar(item.login.uuid)}><Text style={tarjet.boton}> Quitar seleccion </Text></TouchableOpacity>
 
             <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver detalle del contacto </Text>
           </View>

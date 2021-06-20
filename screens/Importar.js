@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList } from 'react-native';
 import {importar, home} from '../Estilo/Styles';
+import  Importadas from '../components/Importadas';
 
 export class Importar extends Component {
     render(){
@@ -13,8 +14,8 @@ export class Importar extends Component {
                         </Text>
                     </TouchableOpacity>
                 </View>
-            
-             <Text style={importar.titulo}>Importar</Text>
+
+             <Text style={importar.titulo}>Contactos favoritos</Text>
              <Text style={importar.atras} onPress={ () => this.props.navigation.goBack()} >
              Volver atras </Text>
 

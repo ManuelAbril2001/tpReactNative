@@ -5,6 +5,7 @@ import {home} from '../Estilo/Styles';
 export class Home extends Component {
     constructor(){
         super();
+        // this.desplegarMenu = this.desplegarMenu.bind(this)
         this.state = {
             toValue: 200,
         }
@@ -24,6 +25,15 @@ export class Home extends Component {
      this.setState({toValue: this.state.toValue==10? 200 : 10})
     }
 
+    // desplegarMenu(){
+    //     console.log(this.info)
+    //     if(style === "none"){
+    //         style = "block";
+    //     } else{
+    //         style = "none";
+    //     }
+    //   }
+
     render(){
         return (
             <View style={home.containerHome}>
@@ -35,6 +45,7 @@ export class Home extends Component {
                     </TouchableOpacity>
                 </View>
 
+                <Text style={home.titulos}>Bienvenidx</Text>
                 <Animated.View style={{
                     top: this.position,
                     width: 300,
@@ -42,17 +53,19 @@ export class Home extends Component {
                     textAlign: 'center',
                 }}>
                     <TouchableOpacity style={{flex:1}} onPress={this.topDown}>
-                    <Text style={home.titulos}>Bienvenidx</Text>
-                    <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Contactos')}>
-                        Ver mis contactos
+                    <Text style={home.titulo}
+                    //  onPress={this.desplegarMenu}
+                     >Desplegar menu</Text>
+                    <Text style={{display: "none"}} onPress={ () => this.props.navigation.navigate('Contactos')}>
+                        Todos los contactos
                     </Text>
-                    <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Importar')}>
-                         Contactos importados
+                    <Text style={{display: "none"}} onPress={ () => this.props.navigation.navigate('Favoritos')}>
+                         Favoritos
                     </Text>
-                    <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Buscar')}>
+                    <Text style={{display: "none"}} onPress={ () => this.props.navigation.navigate('Buscar')}>
                         Buscar/Modificar contactos
                     </Text>
-                    <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Papelera')}>
+                    <Text style={{display: "none"}} onPress={ () => this.props.navigation.navigate('Papelera')}>
                         Papelera de reciclaje
                     </Text>
                 </TouchableOpacity>

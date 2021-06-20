@@ -17,6 +17,12 @@ const home = StyleSheet.create({
         marginBottom: 10,
         textDecorationLine: 'underline',
     },
+    titulo: {
+        justifyContent: 'center',
+        color: 'red',
+        fontSize: 20,
+        marginBottom: 10,
+    },
     texto: {
         fontSize: 20,
         fontWeight: '600',

@@ -50,7 +50,7 @@ class App extends Component{
               >
             <Drawer.Screen name="Home" component={Home}/>
             <Drawer.Screen name="Contactos" component={Ver}/>
-            <Drawer.Screen name="Importar" component={Importar}/>
+            <Drawer.Screen name="Favoritos" component={Importar}/>
             <Drawer.Screen name="Buscar" component={Buscar}/>
             <Drawer.Screen name="Papelera" component={Papelera}/>
             <Drawer.Screen name="Acerca de..." component={Acercade}/>

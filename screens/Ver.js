@@ -28,12 +28,12 @@ class ImportCards extends Component {
     }
 
 
-keyExtractor = (item,idx) => idx.toString();
-renderItem= ({item}) => {
-    return(
-        <Tarjetas item={item} agregarAseleccion={this.agregarAseleccion} quitarSeleccion={this.quitarSeleccion} />
-    )
-}
+    keyExtractor = (item,idx) => idx.toString();
+    renderItem= ({item}) => {
+        return(
+            <Tarjetas item={item} agregarAseleccion={this.agregarAseleccion} quitarSeleccion={this.quitarSeleccion} />
+        )
+    }
 
 
     fetchAPI(numero) {
@@ -52,20 +52,20 @@ renderItem= ({item}) => {
         }
     }
     
-  agregarAseleccion(item){
-      let seleccion = this.state.seleccionados;
-      seleccion.push(item);
-      this.setState({seleccionados:seleccion});
-        console.log(seleccion)
-  }
+    agregarAseleccion(item){
+        let seleccion = this.state.seleccionados;
+        seleccion.push(item);
+        this.setState({seleccionados:seleccion});
+            console.log(seleccion)
+    }
 
-  quitarSeleccion = (idTarjeta) => {
-    let resultado = this.state.seleccionados.filter((item)=>{
-      return item.login.uuid !== idTarjeta;
-    })
-    this.setState({seleccionados:resultado})
-    console.log(resultado);
-   }
+    quitarSeleccion = (idTarjeta) => {
+        let resultado = this.state.seleccionados.filter((item)=>{
+        return item.login.uuid !== idTarjeta;
+        })
+        this.setState({seleccionados:resultado})
+        console.log(resultado);
+    }
 
 
 
