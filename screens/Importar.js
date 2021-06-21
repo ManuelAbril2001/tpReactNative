@@ -8,7 +8,7 @@ export class Importar extends Component {
     constructor(){
         super()
         this.state={
-            fav: []
+            // fav: []
         }
     }
 
@@ -16,15 +16,15 @@ export class Importar extends Component {
         this.getDataimportados()
     }
 
-    async getDataimportados(){
-        try{
-            const result = await AsyncStorage.getItem('fav')
-            this.setState({seleccionadasPrevias: JSON.parse(result)})
-            console.log('se guarda');
-        } catch(e){
-            console.log(e);
-        }
-    }
+    // async getDataimportados(){
+    //     try{
+    //         const result = await AsyncStorage.getItem('fav')
+    //         this.setState({seleccionadasPrevias: JSON.parse(result)})
+    //         console.log('se guarda');
+    //     } catch(e){
+    //         console.log(e);
+    //     }
+    // }
 
     keyExtractor = (item,idx) => idx.toString();
     renderItem= ({item}) => {

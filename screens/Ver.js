@@ -43,30 +43,30 @@ class ImportCards extends Component {
      })
    }
 
-   async importadas(){
-        try{
-            const result = await AsyncStorage.getItem('fav') // clave
-            this.setState({seleccionadasPrevias: JSON.parse(result)})
-        } catch(e){
-            console.log(e);
-        }
-    }
+//    async importadas(){
+//         try{
+//             const result = await AsyncStorage.getItem('fav') // clave
+//             this.setState({seleccionadasPrevias: JSON.parse(result)})
+//         } catch(e){
+//             console.log(e);
+//         }
+//     }
 
     
-    agregarAseleccion(item){
-        let seleccion = this.state.seleccionados;
-        seleccion.push(item);
-        this.setState({seleccionados:seleccion});
-            console.log(seleccion)
-    }
+//     agregarAseleccion(item){
+//         let seleccion = this.state.seleccionados;
+//         seleccion.push(item);
+//         this.setState({seleccionados:seleccion});
+//             console.log(seleccion)
+//     }
 
-    quitarSeleccion = (idTarjeta) => {
-        let resultado = this.state.seleccionados.filter((item)=>{
-        return item.login.uuid !== idTarjeta;
-        })
-        this.setState({seleccionados:resultado})
-        console.log(resultado);
-    }
+//     quitarSeleccion = (idTarjeta) => {
+//         let resultado = this.state.seleccionados.filter((item)=>{
+//         return item.login.uuid !== idTarjeta;
+//         })
+//         this.setState({seleccionados:resultado})
+//         console.log(resultado);
+//     }
 
 
 
