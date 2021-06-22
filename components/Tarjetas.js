@@ -19,7 +19,7 @@ class Tarjetas extends Component {
         fav:[]
 
       }
-      this.agregar = this.agregar.bind(this)
+      // this.agregar = this.agregar.bind(this)
 
   }
 
@@ -40,21 +40,28 @@ componentDidMount() {
   }
 
   async agregar (item){
+    console.log('agregar')
     // this.props.agregarAseleccion(item);
     try{
       let result = await AsyncStorage.getItem('fav')
       result = JSON.parse(result)
       if (result == null) result=[] 
       result.push(item)
-
-      await AsyncStorage.setItem('fav', result)
-      
+      console.log(result)
+      let almacenar = JSON.stringify(result) 
+      await AsyncStorage.setItem('fav', almacenar)
 
   }catch(e){
-
+    console.log(e)
   }
   }
 
+  agregarFavoritos (item){
+    console.log('agregarFavoritos')
+    // async() => await 
+    this.agregar(item)
+    console.log('finAgregarFavoritos')
+  }
 
 
  
@@ -65,7 +72,6 @@ const {item} = this.props;
 return (
         <View key={item.login.uuid} style={tarjet.container}>
           <View style={tarjet.tarjeta}>
-              <Text style={tarjet.eliminar}>X</Text>
               <View style={tarjet.contenido}>
               <Image style={tarjet.imagen} source={{uri: item.picture.large}}/>
               <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Nombre: </Text>{item.name.first} </Text> 
@@ -73,7 +79,7 @@ return (
               <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Email: </Text> {item.email} </Text>
               <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Fecha de nacimiento: </Text> {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
 
-              <TouchableOpacity  onPress={ async() => await this.agregar(item)}><Text style={tarjet.boton}> Agregar a favoritos </Text></TouchableOpacity>
+              <TouchableOpacity  onPress={() => this.agregarFavoritos(item)}><Text style={tarjet.boton}> Agregar a favoritos </Text></TouchableOpacity>
               
             <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver detalle del contacto </Text>
           </View>

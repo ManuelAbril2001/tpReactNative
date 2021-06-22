@@ -89,11 +89,6 @@ render(){
       }
     
 
-   
-
-
-    
-
 }
 
-export default Component
+export default Importadas;

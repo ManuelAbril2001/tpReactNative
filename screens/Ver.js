@@ -12,7 +12,7 @@ import Tarjetas from '../components/Tarjetas';
 import {getData} from '../api/RandomUser';
 import {tarjet, home} from '../Estilo/Styles';
 
-class ImportCards extends Component {
+class Ver extends Component {
     constructor(){
         super();
         this.state = {
@@ -95,6 +95,7 @@ render(){
         <View style={tarjet.flat}>
             <FlatList data={this.state.items} renderItem={this.renderItem} keyExtractor={this.keyExtractor}> </FlatList>
         </View>
+        
         <Text style={tarjet.atras} onPress={ () => this.props.navigation.goBack()}> Volver atras </Text>
     </View>
     </View>
@@ -103,4 +104,4 @@ render(){
     }
 }
 
-export default ImportCards;
+export default Ver;

@@ -15,17 +15,16 @@ export class Importar extends Component {
     }
 
    async componentDidMount(){
-       await  this.getDataimportados()
+       await this.getDataimportados()
     }
 
     async getDataimportados(){
         try{
-            
             let result = await AsyncStorage.getItem('fav')
             result = JSON.parse(result)
-            if (result == null) result=[] 
+            // if (result == null) result=[] 
             this.setState({fav:result})
-            console.log('se guarda');
+            console.log(result);
         } catch(e){
             console.log(e);
         }
@@ -33,17 +32,14 @@ export class Importar extends Component {
 
     keyExtractor = (item,idx) => idx.toString();
     renderItem= ({item}) => {
-    return(
-        <Importadas item={item} />
-    )
-}
+        return(
+            <Importadas item={item} />
+        )
+    }
 
 
     render(){
-
-  
-
-        return (
+       return (
             <View style={importar.container}>
                 <View style={home.lineaboton}>
                     <TouchableOpacity onPress={ () => this.props.navigation.openDrawer()}>
@@ -56,11 +52,11 @@ export class Importar extends Component {
              <Text style={importar.titulo}>Contactos favoritos</Text>
 
              <View style={tarjet.flat}>
-            <FlatList data={this.state.fav} renderItem={this.renderItem} keyExtractor={this.keyExtractor}> </FlatList>
+                <FlatList data={this.state.fav} renderItem={this.renderItem} keyExtractor={this.keyExtractor}> </FlatList>
              </View>
 
 
-             <Text style={importar.atras} onPress={ () => this.props.navigation.goBack()} >
+             <Text style={tarjet.atras} onPress={ () => this.props.navigation.goBack()} >
              Volver atras </Text>
 
             </View>
