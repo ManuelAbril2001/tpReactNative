@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList } from 'react-native';
-import {importar, home} from '../Estilo/Styles';
+import {importar, home, tarjet} from '../Estilo/Styles';
 import  Importadas from '../components/Importadas';
 import  Ver from './Ver';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export class Importar extends Component {
     constructor(){
@@ -12,14 +14,17 @@ export class Importar extends Component {
         }
     }
 
-    componenDidMount(){
-        this.getDataimportados()
+   async componentDidMount(){
+       await  this.getDataimportados()
     }
 
     async getDataimportados(){
         try{
-            const result = await AsyncStorage.getItem('fav')
-            this.setState({seleccionadasPrevias: JSON.parse(result)})
+            
+            let result = await AsyncStorage.getItem('fav')
+            result = JSON.parse(result)
+            if (result == null) result=[] 
+            this.setState({fav:result})
             console.log('se guarda');
         } catch(e){
             console.log(e);
@@ -50,7 +55,9 @@ export class Importar extends Component {
 
              <Text style={importar.titulo}>Contactos favoritos</Text>
 
-        
+             <View style={tarjet.flat}>
+            <FlatList data={this.state.fav} renderItem={this.renderItem} keyExtractor={this.keyExtractor}> </FlatList>
+             </View>
 
 
              <Text style={importar.atras} onPress={ () => this.props.navigation.goBack()} >

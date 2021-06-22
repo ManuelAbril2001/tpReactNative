@@ -12,34 +12,82 @@ class Importadas extends Component{
         }
     }
 
-    componenDidMount(){
-        this.getDataimportados()
-    }
+    // componenDidMount(){
+    //     this.getDataimportados()
+    // }
 
-    async favoritos(){
-    try{
-        this.importadas();
-        const fav = [...this.state.seleccionadasPrevias, ...this.state.seleccionados]
+//     async favoritos(){
+//     try{
+//         this.importadas();
+//         const fav = [...this.state.seleccionadasPrevias, ...this.state.seleccionados]
 
-        console.log(fav.length);
+//         console.log(fav.length);
    
 
-        const jsonUsers = JSON.stringify(fav);
+//         const jsonUsers = JSON.stringify(fav);
 
-        const seleccionadosLength = "se importaron" + this.state.seleccionados.length + "tarjetas seleccionados"
-        await AsyncStorage.setItem('fav', jsonUsers)
-        if(this.state.seleccionados.length != 0){
-        // this.quitar(this.state.seleccionados, this.state.personas)
-        console.log('se guarda');
-        }
-        else{
-            console.log('no se guarda');
-        }
-        this.setState({seleccionados: []})
-    }catch(e){
-        console.log(e);
-    }
-}
+//         const seleccionadosLength = "se importaron" + this.state.seleccionados.length + "tarjetas seleccionados"
+//         await AsyncStorage.setItem('fav', jsonUsers)
+//         if(this.state.seleccionados.length != 0){
+//         // this.quitar(this.state.seleccionados, this.state.personas)
+//         console.log('se guarda');
+//         }
+//         else{
+//             console.log('no se guarda');
+//         }
+//         this.setState({seleccionados: []})
+//     }catch(e){
+//         console.log(e);
+//     }
+// }
+
+render(){
+    const { error, isLoaded } = this.state;
+    const {item} = this.props;
+    
+    return (
+            <View key={item.login.uuid} style={tarjet.container}>
+              <View style={tarjet.tarjeta}>
+                  <Text style={tarjet.eliminar}>X</Text>
+                  <View style={tarjet.contenido}>
+                  <Image style={tarjet.imagen} source={{uri: item.picture.large}}/>
+                  <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Nombre: </Text>{item.name.first} </Text> 
+                  <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Apellido: </Text>{item.name.last} </Text>
+                  <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Email: </Text> {item.email} </Text>
+                  <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Fecha de nacimiento: </Text> {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
+    
+                  
+                <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver detalle del contacto </Text>
+              </View>
+    
+              <Modal visible={this.state.showModal} animationType="slide">
+              <View style={tarjet.verdetalle}>
+                <Button title="Presione para modificar el tamaño" onPress={this.toSize}></Button>
+                       <Animated.View style={{
+                         borderWidth: 2,
+                         borderColor: 'black',
+                           width: 350,
+                           height: 200,
+                           transform: [
+                               {scale: this.resize}
+                           ]
+                       }}>
+                          <Text style={tarjet.nombre}> Mas detalles de<Text style={tarjet.interior}> {item.name.first} {item.name.last} </Text></Text>
+                          <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Calle y Número: </Text> {item.location.street.name}, {item.location.street.number}</Text>
+                          <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Ciudad/Estado: </Text> {item.location.city}</Text>
+                          <Text style={tarjet.detalle}> <Text style={tarjet.interior}> País: </Text> {item.location.country}</Text>
+                          <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Código postal: </Text> {item.location.postcode}</Text>
+                          <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Fecha de Registro: </Text> {item.registered.date.substring(0,10)}</Text>
+                          <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Teléfono: </Text> {item.phone}</Text>
+                          <Text style={tarjet.boton} title="Volver atras" onPress={()=> this.setState({showModal: !this.state.showModal})}> Volver atras</Text>
+                       </Animated.View>
+                </View>
+              </Modal>
+              </View>
+            </View>
+        )
+      }
+    
 
    
 

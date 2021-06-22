@@ -23,15 +23,15 @@ class ImportCards extends Component {
             fav:[]
 
         }
-        this.agregarAseleccion = this.agregarAseleccion.bind(this);
-        this.quitarSeleccion = this.quitarSeleccion.bind(this);
+        // this.agregarAseleccion = this.agregarAseleccion.bind(this);
+        
     }
 
 
     keyExtractor = (item,idx) => idx.toString();
     renderItem= ({item}) => {
         return(
-            <Tarjetas item={item} agregarAseleccion={this.agregarAseleccion} quitarSeleccion={this.quitarSeleccion} />
+            <Tarjetas item={item} agregarAseleccion={this.agregarAseleccion}  />
         )
     }
 
@@ -43,30 +43,35 @@ class ImportCards extends Component {
      })
    }
 
-   async importadas(){
-        try{
-            const result = await AsyncStorage.getItem('fav') // clave
-            this.setState({seleccionadasPrevias: JSON.parse(result)})
-        } catch(e){
-            console.log(e);
-        }
-    }
+//    async importadas(){
+//         try{
+//             const result = await AsyncStorage.getItem('fav') // clave
+//             this.setState({seleccionadasPrevias: JSON.parse(result)})
+//         } catch(e){
+//             console.log(e);
+//         }
+//     }
 
     
-    agregarAseleccion(item){
-        let seleccion = this.state.seleccionados;
-        seleccion.push(item);
-        this.setState({seleccionados:seleccion});
-            console.log(seleccion)
+    async agregarAseleccion(item){
+        try{
+            let result = await AsyncStorage.getItem('fav')
+            result = JSON.parse(result)
+            if (result == null) result=[] 
+            result.push(item)
+
+            await AsyncStorage.setItem('fav', result)
+            
+
+        }catch(e){
+
+        }
+        // let seleccion = this.state.seleccionados;
+        // seleccion.push(item);
+        // this.setState({seleccionados:seleccion});
+        //     console.log(seleccion)
     }
 
-    quitarSeleccion = (idTarjeta) => {
-        let resultado = this.state.seleccionados.filter((item)=>{
-        return item.login.uuid !== idTarjeta;
-        })
-        this.setState({seleccionados:resultado})
-        console.log(resultado);
-    }
 
 
 

@@ -39,8 +39,20 @@ componentDidMount() {
       this.setState({toValue: this.state.toValue==0.8? 1 : 0.8})
   }
 
-  agregar (item){
-    this.props.agregarAseleccion(item);
+  async agregar (item){
+    // this.props.agregarAseleccion(item);
+    try{
+      let result = await AsyncStorage.getItem('fav')
+      result = JSON.parse(result)
+      if (result == null) result=[] 
+      result.push(item)
+
+      await AsyncStorage.setItem('fav', result)
+      
+
+  }catch(e){
+
+  }
   }
 
 
@@ -61,7 +73,7 @@ return (
               <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Email: </Text> {item.email} </Text>
               <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Fecha de nacimiento: </Text> {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
 
-              <TouchableOpacity  onPress={ () => this.agregar(item)}><Text style={tarjet.boton}> Agregar a favoritos </Text></TouchableOpacity>
+              <TouchableOpacity  onPress={ async() => await this.agregar(item)}><Text style={tarjet.boton}> Agregar a favoritos </Text></TouchableOpacity>
               
             <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver detalle del contacto </Text>
           </View>
