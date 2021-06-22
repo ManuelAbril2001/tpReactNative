@@ -14,12 +14,12 @@ class Tarjetas extends Component {
         items: [],
         showModal: false,
         toValue: 1,
-        // seleccionadasPrevias: [],
-        // seleccionados: [],
-        // fav:[]
+        seleccionadasPrevias: [],
+        seleccionados: [],
+        fav:[]
 
       }
-      // this.agregar = this.agregar.bind(this)
+      this.agregar = this.agregar.bind(this)
 
   }
 
