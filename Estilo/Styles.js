@@ -23,6 +23,23 @@ const home = StyleSheet.create({
         fontSize: 20,
         marginBottom: 10,
     },
+    mover:{
+        color: 'black',
+        fontSize: 15,
+        marginBottom: 10,
+    },
+    contactos:{
+        color: 'blue',
+        fontSize: 20,
+    },
+    favoritos:{
+        color: 'pink',
+        fontSize: 20,
+    },
+    papelera:{
+        color: 'brown',
+        fontSize: 20,
+    },
     texto: {
         fontSize: 20,
         fontWeight: '600',
@@ -88,7 +105,7 @@ const tarjet = StyleSheet.create({
         fontStyle: 'italic',
     },
     eliminar: {
-        fontSize: 15,
+        fontSize: 25,
         color: 'red',
         textAlign: 'right',
         fontWeight: 'bold',

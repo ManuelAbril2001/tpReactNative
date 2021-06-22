@@ -8,38 +8,32 @@ class Importadas extends Component{
     constructor(){
         super()
         this.state={
-            fav: []
+          error: null,
+          isLoaded: false,
+          numero: "",
+          items: [],
+          showModal: false,
+          toValue: 1,
+          seleccionadasPrevias: [],
+          seleccionados: [],
+          fav:[],
+          comentarios: [],
         }
     }
 
-    // componenDidMount(){
-    //     this.getDataimportados()
-    // }
 
-//     async favoritos(){
-//     try{
-//         this.importadas();
-//         const fav = [...this.state.seleccionadasPrevias, ...this.state.seleccionados]
+    resize = new Animated.Value(0.8);
 
-//         console.log(fav.length);
-   
+  toSize = () => {
+      Animated.spring(this.resize,{
+          toValue: this.state.toValue,
+          friction: 16,
+          tension: 10,
+          useNativeDriver: false,
+      }).start();
+      this.setState({toValue: this.state.toValue==0.8? 1 : 0.8})
+  }
 
-//         const jsonUsers = JSON.stringify(fav);
-
-//         const seleccionadosLength = "se importaron" + this.state.seleccionados.length + "tarjetas seleccionados"
-//         await AsyncStorage.setItem('fav', jsonUsers)
-//         if(this.state.seleccionados.length != 0){
-//         // this.quitar(this.state.seleccionados, this.state.personas)
-//         console.log('se guarda');
-//         }
-//         else{
-//             console.log('no se guarda');
-//         }
-//         this.setState({seleccionados: []})
-//     }catch(e){
-//         console.log(e);
-//     }
-// }
 
 render(){
     const { error, isLoaded } = this.state;
@@ -48,7 +42,7 @@ render(){
     return (
             <View key={item.login.uuid} style={tarjet.container}>
               <View style={tarjet.tarjeta}>
-                  <Text style={tarjet.eliminar}>X</Text>
+                  <Text style={tarjet.eliminar}> X</Text>
                   <View style={tarjet.contenido}>
                   <Image style={tarjet.imagen} source={{uri: item.picture.large}}/>
                   <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Nombre: </Text>{item.name.first} </Text> 
@@ -56,8 +50,10 @@ render(){
                   <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Email: </Text> {item.email} </Text>
                   <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Fecha de nacimiento: </Text> {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
     
-                  
+                
                 <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver detalle del contacto </Text>
+                <Text style={tarjet.detalle}>Comentarios:</Text>
+                <TextInput style={{textAlign: 'center'}} placeholder='Dejá tu comentario acá' onChangeText={texto => this.setState({comentarios: texto})}/> 
               </View>
     
               <Modal visible={this.state.showModal} animationType="slide">

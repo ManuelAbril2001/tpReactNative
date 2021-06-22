@@ -25,16 +25,7 @@ export class Home extends Component {
      this.setState({toValue: this.state.toValue==10? 200 : 10})
     }
 
-    // desplegarMenu(){
-    //     console.log(this.info)
-    //     if(style === "none"){
-    //         style = "block";
-    //     } else{
-    //         style = "none";
-    //     }
-    //   }
-
-    render(){
+        render(){
         return (
             <View style={home.containerHome}>
                 <View style={home.lineaboton}>
@@ -53,19 +44,14 @@ export class Home extends Component {
                     textAlign: 'center',
                 }}>
                     <TouchableOpacity style={{flex:1}} onPress={this.topDown}>
-                    <Text style={home.titulo}
-                    //  onPress={this.desplegarMenu}
-                     >Mover menu</Text>
-                    <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Contactos')}>
+                    <Text style={home.mover}>Mover menu</Text>
+                    <Text style={home.contactos} onPress={ () => this.props.navigation.navigate('Contactos')}>
                         Todos los contactos
                     </Text>
-                    <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Favoritos')}>
+                    <Text style={home.favoritos} onPress={ () => this.props.navigation.navigate('Favoritos')}>
                          Favoritos
                     </Text>
-                    <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Buscar')}>
-                        Buscar/Modificar contactos
-                    </Text>
-                    <Text style={home.texto} onPress={ () => this.props.navigation.navigate('Papelera')}>
+                    <Text style={home.papelera} onPress={ () => this.props.navigation.navigate('Papelera')}>
                         Papelera de reciclaje
                     </Text>
                 </TouchableOpacity>

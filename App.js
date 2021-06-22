@@ -9,7 +9,6 @@ import Ver from './screens/Ver';
 import {Home} from './screens/Home';
 import {Papelera} from './screens/Papelera';
 import {Importar} from './screens/Importar';
-import {Buscar} from './screens/Buscar';
 import {Acercade} from './screens/Acercade';
 
 // const Stack = createStackNavigator();
@@ -51,7 +50,6 @@ class App extends Component{
             <Drawer.Screen name="Home" component={Home}/>
             <Drawer.Screen name="Contactos" component={Ver}/>
             <Drawer.Screen name="Favoritos" component={Importar}/>
-            <Drawer.Screen name="Buscar" component={Buscar}/>
             <Drawer.Screen name="Papelera" component={Papelera}/>
             <Drawer.Screen name="Acerca de..." component={Acercade}/>
           </Drawer.Navigator>

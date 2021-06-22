@@ -18,12 +18,10 @@ class Ver extends Component {
         this.state = {
             items: [],
             numero: "",
-            seleccionadasPrevias: [],
-            seleccionados: [],
             fav:[]
 
         }
-        // this.agregarAseleccion = this.agregarAseleccion.bind(this);
+        this.agregarAseleccion = this.agregarAseleccion.bind(this);
         
     }
 
@@ -43,33 +41,24 @@ class Ver extends Component {
      })
    }
 
-//    async importadas(){
-//         try{
-//             const result = await AsyncStorage.getItem('fav') // clave
-//             this.setState({seleccionadasPrevias: JSON.parse(result)})
-//         } catch(e){
-//             console.log(e);
-//         }
-//     }
-
-    
-    async agregarAseleccion(item){
+    async agregarAseleccion(item){ //agrega a fila el contacto seleccionado
         try{
             let result = await AsyncStorage.getItem('fav')
             result = JSON.parse(result)
             if (result == null) result=[] 
             result.push(item)
-
-            await AsyncStorage.setItem('fav', result)
+            const toJSON = JSON.stringify(result)
+            await AsyncStorage.setItem('fav', toJSON)
             
+            const nuevaLista = this.state.items.filter(itemList => { // elimina el elegido
+                return itemList.login.uuid != item.login.uuid
+            });
+
+            this.setState({items: nuevaLista})
 
         }catch(e){
-
+            console.log(e)
         }
-        // let seleccion = this.state.seleccionados;
-        // seleccion.push(item);
-        // this.setState({seleccionados:seleccion});
-        //     console.log(seleccion)
     }
 
 

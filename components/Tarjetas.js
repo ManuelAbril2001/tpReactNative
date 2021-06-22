@@ -5,8 +5,8 @@ import {getData} from "../api/RandomUser";
 import {tarjet} from '../Estilo/Styles';
 
 class Tarjetas extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
     this.state = {
         error: null,
         isLoaded: false,
@@ -14,13 +14,9 @@ class Tarjetas extends Component {
         items: [],
         showModal: false,
         toValue: 1,
-        seleccionadasPrevias: [],
-        seleccionados: [],
         fav:[]
 
       }
-      // this.agregar = this.agregar.bind(this)
-
   }
 
 
@@ -39,28 +35,10 @@ componentDidMount() {
       this.setState({toValue: this.state.toValue==0.8? 1 : 0.8})
   }
 
-  async agregar (item){
-    console.log('agregar')
-    // this.props.agregarAseleccion(item);
-    try{
-      let result = await AsyncStorage.getItem('fav')
-      result = JSON.parse(result)
-      if (result == null) result=[] 
-      result.push(item)
-      console.log(result)
-      let almacenar = JSON.stringify(result) 
-      await AsyncStorage.setItem('fav', almacenar)
-
-  }catch(e){
-    console.log(e)
-  }
-  }
 
   agregarFavoritos (item){
-    console.log('agregarFavoritos')
-    // async() => await 
-    this.agregar(item)
-    console.log('finAgregarFavoritos')
+    this.props.agregarAseleccion(item);
+    alert('Tarjeta guardada')
   }
 
 
