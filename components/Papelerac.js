@@ -14,7 +14,6 @@ class Papelera extends Component{
           items: [],
           showModal: false,
           toValue: 1,
-          fav:[],
           comentarios: [],
         }
     }
@@ -40,7 +39,7 @@ render(){
     return (
             <View key={item.login.uuid} style={tarjet.container}>
               <View style={tarjet.tarjeta}>
-                  <Text style={tarjet.eliminar}> X</Text>
+              <TouchableOpacity><Text style={tarjet.boton}> X 4ever </Text></TouchableOpacity>
                   <View style={tarjet.contenido}>
                   <Image style={tarjet.imagen} source={{uri: item.picture.large}}/>
                   <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Nombre: </Text>{item.name.first} </Text> 

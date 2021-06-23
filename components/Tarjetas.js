@@ -14,7 +14,8 @@ class Tarjetas extends Component {
         items: [],
         showModal: false,
         toValue: 1,
-        fav:[]
+        fav:[],
+        papelera: [],
 
       }
   }

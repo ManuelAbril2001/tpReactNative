@@ -10,8 +10,12 @@ export class Importar extends Component {
     constructor(){
         super()
         this.state={
-            fav: []
+            fav: [],
+            items: [],
+            numero: "",
+            papelera:[],
         }
+        this.agregarApapelera = this.agregarApapelera.bind(this);
     }
 
    async componentDidMount(){
@@ -32,9 +36,37 @@ export class Importar extends Component {
     keyExtractor = (item,idx) => idx.toString();
     renderItem= ({item}) => {
         return(
-            <Importadas item={item} />
+            <Importadas item={item} agregarApapelera={this.agregarApapelera} />
         )
     }
+
+
+    fetchAPI(numero) {
+    getData(numero)
+     .then(results =>{
+         this.setState({items:results})
+     })
+   }
+
+   async agregarApapelera(item){ //agrega a fila el contacto seleccionado
+    try{
+        let result = await AsyncStorage.getItem('papelera')
+        result = JSON.parse(result)
+        if (result == null) result=[] 
+        result.push(item)
+        const toJSON = JSON.stringify(result)
+        await AsyncStorage.setItem('papelera', toJSON)
+        
+        const nuevaLista = this.state.items.filter(itemList => { // elimina el elegido
+            return itemList.login.uuid != item.login.uuid
+        });
+
+        this.setState({items: nuevaLista})
+
+    }catch(e){
+        console.log(e)
+    }
+}
 
 
 

@@ -5,8 +5,8 @@ import {getData} from "../api/RandomUser";
 import {tarjet} from '../Estilo/Styles';
 
 class Importadas extends Component{
-    constructor(){
-        super()
+  constructor(props){
+    super(props);
         this.state={
           error: null,
           isLoaded: false,
@@ -16,6 +16,7 @@ class Importadas extends Component{
           toValue: 1,
           fav:[],
           comentarios: [],
+          papelera: [],
         }
     }
 
@@ -32,6 +33,11 @@ class Importadas extends Component{
       this.setState({toValue: this.state.toValue==0.8? 1 : 0.8})
   }
 
+  agregarPapelera (item){
+    this.props.agregarApapelera(item);
+    alert('Tarjeta eliminada a papelera')
+  }
+
 
 render(){
     const { error, isLoaded } = this.state;
@@ -40,7 +46,7 @@ render(){
     return (
             <View key={item.login.uuid} style={tarjet.container}>
               <View style={tarjet.tarjeta}>
-                  <Text style={tarjet.eliminar}> X</Text>
+              <TouchableOpacity  onPress={() => this.agregarPapelera(item)}><Text style={tarjet.boton}> X a papelera </Text></TouchableOpacity>
                   <View style={tarjet.contenido}>
                   <Image style={tarjet.imagen} source={{uri: item.picture.large}}/>
                   <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Nombre: </Text>{item.name.first} </Text> 
