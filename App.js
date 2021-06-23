@@ -10,6 +10,7 @@ import {Home} from './screens/Home';
 import {Papelera} from './screens/Papelera';
 import {Importar} from './screens/Importar';
 import {Acercade} from './screens/Acercade';
+import {Buscar} from './screens/Buscar';
 
 // const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -52,6 +53,7 @@ class App extends Component{
             <Drawer.Screen name="Favoritos" component={Importar}/>
             <Drawer.Screen name="Papelera" component={Papelera}/>
             <Drawer.Screen name="Acerca de..." component={Acercade}/>
+            <Drawer.Screen name="Buscar" component={Buscar}/>
           </Drawer.Navigator>
         
         </NavigationContainer>

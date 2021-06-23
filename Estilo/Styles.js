@@ -40,6 +40,10 @@ const home = StyleSheet.create({
         color: 'brown',
         fontSize: 20,
     },
+    buscar:{
+        color: 'red',
+        fontSize: 20,
+    },
     texto: {
         fontSize: 20,
         fontWeight: '600',

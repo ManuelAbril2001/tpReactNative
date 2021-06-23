@@ -54,6 +54,9 @@ export class Home extends Component {
                     <Text style={home.papelera} onPress={ () => this.props.navigation.navigate('Papelera')}>
                         Papelera de reciclaje
                     </Text>
+                    <Text style={home.buscar} onPress={ () => this.props.navigation.navigate('Buscar')}>
+                        Buscar
+                    </Text>
                 </TouchableOpacity>
                 </Animated.View>
 

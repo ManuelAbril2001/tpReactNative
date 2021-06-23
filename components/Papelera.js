@@ -4,7 +4,7 @@ import { StyleSheet, Image, Text,  Animated, Easing, View, TextInput, Alert, Tou
 import {getData} from "../api/RandomUser";
 import {tarjet} from '../Estilo/Styles';
 
-class Importadas extends Component{
+class Papelera extends Component{
     constructor(){
         super()
         this.state={
@@ -85,4 +85,4 @@ render(){
 
 }
 
-export default Importadas;
+export default Papelera;
