@@ -101,6 +101,26 @@ class Ver extends Component {
         }
     }
 
+    filtrarPorCiudad(text){
+        if (text.length > 0) {
+            let buscarCiudad = this.state.items.filter( item => {
+                let ciudad = item.location.city.toUpperCase();
+                let inputTexto = text.toUpperCase();
+                return ciudad.includes(inputTexto)
+            });
+    
+            this.setState({
+                items: buscarCiudad,
+                text: text,
+            })
+    
+        }else {
+            this.setState({
+                items: this.state.items
+            })
+        }
+    }
+
     filtrarPorPais(text){
         if (text.length > 0) {
             let buscarPais = this.state.items.filter( item => {
@@ -121,25 +141,6 @@ class Ver extends Component {
         }
     }
 
-    filtrarPorCiudad(text){
-        if (text.length > 0) {
-            let buscarCiudad = this.state.items.filter( item => {
-                let ciudad = item.location.city.toUpperCase();
-                let inputTexto = text.toUpperCase();
-                return ciudad.includes(inputTexto)
-            });
-    
-            this.setState({
-                items: buscarCiudad,
-                text: text,
-            })
-    
-        }else {
-            this.setState({
-                items: this.state.items
-            })
-        }
-    }
 
    
 
@@ -163,10 +164,10 @@ render(){
         
         <View style={tarjet.flat}>
         <Text style={tarjet.coment}>Buscar Tarjetas</Text>
-            <TextInput placeholder="Nombre" onChangeText={ (text) => this.filtrarPorNombre(text)}></TextInput>
-            <TextInput placeholder="Apellido" onChangeText={ (text) => this.filtrarPorApellido(text)}></TextInput>
-            <TextInput placeholder="País" onChangeText={ (text) => this.filtrarPorPais(text)}></TextInput>
-            <TextInput placeholder="Ciudad" onChangeText={ (text) => this.filtrarPorCiudad(text)}></TextInput>
+            <TextInput style={{textAlign: 'center'}} placeholder="Buscar por nombre" onChangeText={ (text) => this.filtrarPorNombre(text)}></TextInput>
+            <TextInput style={{textAlign: 'center'}} placeholder="Buscar por apellido" onChangeText={ (text) => this.filtrarPorApellido(text)}></TextInput>
+            <TextInput style={{textAlign: 'center'}} placeholder="Buscar por pais" onChangeText={ (text) => this.filtrarPorPais(text)}></TextInput>
+            <TextInput style={{textAlign: 'center'}} placeholder="Buscar por ciudad" onChangeText={ (text) => this.filtrarPorCiudad(text)}></TextInput>
 
             <FlatList data={this.state.items} renderItem={this.renderItem} keyExtractor={this.keyExtractor}> </FlatList>
         </View>
