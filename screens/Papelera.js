@@ -39,9 +39,10 @@ export class Papelera extends Component {
     keyExtractor = (item,idx) => idx.toString();
     renderItem= ({item}) => {
         return(
-            <Papelerac item={item} eliminarTarjetas={this.eliminarTarjetas.bind(this)}
+            <Papelerac item={item}/>
+            // eliminarTarjetas={this.eliminarTarjetas.bind(this)}
             // agregarAeliminar={this.agregarAeliminar} 
-            />
+            
         )
     }
 
@@ -53,16 +54,16 @@ export class Papelera extends Component {
      })
    }
 
-   eliminarTarjetas (item){
-    console.log(item)
-     let resultados = this.state.items.filter(item => {
-    return (item.login.uuid !== items.login.uuid)
-    })
+//    eliminarTarjetas (item){
+//     console.log(item)
+//      let resultados = this.state.items.filter(item => {
+//     return (item.login.uuid !== items.login.uuid)
+//     })
 
-    this.setState({items: resultados})
+//     this.setState({items: resultados})
 
-    alert('Se eliminó tu tarjeta')
-}
+//     alert('Se eliminó tu tarjeta')
+// }
 
 //    async agregarAeliminar(item){ //agrega a fila el contacto seleccionado
 //     try{
@@ -85,7 +86,6 @@ export class Papelera extends Component {
 // }
 
 
-
     render(){
        return (
         <View style={home.padre}>
@@ -99,7 +99,7 @@ export class Papelera extends Component {
 
             <View style={tarjet.todo}>
              <Text style={tarjet.titulo}>Contactos en papelera</Text>
-
+           
              <View style={tarjet.flat}>
                 <FlatList data={this.state.papelera} renderItem={this.renderItem} keyExtractor={this.keyExtractor}> </FlatList>
              </View>

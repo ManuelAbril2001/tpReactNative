@@ -46,7 +46,8 @@ render(){
     return (
             <View key={item.login.uuid} style={tarjet.container}>
               <View style={tarjet.tarjeta}>
-              <TouchableOpacity onPress= {this.props.eliminarTarjetas.bind(this,item.login.uuid)}
+              <TouchableOpacity 
+              // onPress= {this.props.eliminarTarjetas.bind(this,item.login.uuid)}
               // onPress={() => this.agregarEliminar(item)}
               ><Text style={tarjet.eliminar}> Eliminar definitivamente </Text></TouchableOpacity>
                   <View style={tarjet.contenido}>
