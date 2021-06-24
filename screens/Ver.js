@@ -61,6 +61,88 @@ class Ver extends Component {
         }
     }
 
+    //filtros
+    filtrarNombre(text){
+
+        if (text.length > 0) {
+            let buscarNombre = this.state.items.filter( item => {
+                let nombre = item.name.first.toUpperCase();
+                let inputTexto = text.toUpperCase();
+                return nombre.includes(inputTexto)
+            });
+    
+            this.setState({
+                items: buscarNombre,
+                text: text
+            })
+    
+        } else {
+            this.setState({
+                items: this.state.tarjetasBuscadas
+            })
+        }
+    }
+    filtrarApellido(text){
+    
+        if (text.length > 0) {
+            let buscarApellido = this.state.items.filter( item => {
+                let apellido = item.name.last.toUpperCase();
+                let inputTexto = text.toUpperCase();
+                return apellido.includes(inputTexto)
+            });
+    
+            this.setState({
+                items: buscarApellido,
+                text: text,
+            })
+    
+        }else {
+            this.setState({
+                items: this.state.items
+            })
+        }
+    }
+    filtrarPais(text){
+    
+        if (text.length > 0) {
+            let buscarPais = this.state.items.filter( item => {
+                let pais = item.location.country.toUpperCase();
+                let inputTexto = text.toUpperCase();
+                return pais.includes(inputTexto)
+            });
+    
+            this.setState({
+                items: buscarPais,
+                text: text,
+            })
+    
+        }else {
+            this.setState({
+                items: this.state.items
+            })
+        }
+    }
+    filtrarCiudad(text){
+    
+        if (text.length > 0) {
+            let buscarCiudad = this.state.items.filter( item => {
+                let ciudad = item.location.city.toUpperCase();
+                let inputTexto = text.toUpperCase();
+                return ciudad.includes(inputTexto)
+            });
+    
+            this.setState({
+                items: buscarCiudad,
+                text: text,
+            })
+    
+        }else {
+            this.setState({
+                items: this.state.items
+            })
+        }
+    }
+
    
 
 
@@ -80,6 +162,11 @@ render(){
 
         <TextInput style={{textAlign: 'center'}} placeholder='¿Cuantos contactos queres importar?' keyboardType="numeric"  onChangeText={ (text) => this.fetchAPI(text)}/> 
         
+        <Text style={{textAlign: 'center'}} >Buscar Tarjetas</Text>
+            <TextInput style={{textAlign: 'center'}} placeholder="Nombre" onChangeText={ (text) => this.filtrarNombre(text)}></TextInput>
+            <TextInput style={{textAlign: 'center'}} placeholder="Apellido" onChangeText={ (text) => this.filtrarApellido(text)}></TextInput>
+            <TextInput style={{textAlign: 'center'}} placeholder="País" onChangeText={ (text) => this.filtrarPais(text)}></TextInput>
+            <TextInput style={{textAlign: 'center'}} placeholder="Ciudad" onChangeText={ (text) => this.filtrarCiudad(text)}></TextInput>
 
         <View style={tarjet.flat}>
             <FlatList data={this.state.items} renderItem={this.renderItem} keyExtractor={this.keyExtractor}> </FlatList>

@@ -10,7 +10,7 @@ import {Home} from './screens/Home';
 import {Papelera} from './screens/Papelera';
 import {Importar} from './screens/Importar';
 import {Acercade} from './screens/Acercade';
-import {Buscar} from './screens/Buscar';
+
 
 // const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
