@@ -13,9 +13,10 @@ const home = StyleSheet.create({
         justifyContent: 'center',
         color: 'green',
         fontSize: 30,
-        fontWeight: 'bold',
         marginBottom: 10,
         textDecorationLine: 'underline',
+        fontWeight: '300',
+        letterSpacing: 5,
     },
     titulo: {
         justifyContent: 'center',
@@ -24,25 +25,26 @@ const home = StyleSheet.create({
         marginBottom: 10,
     },
     mover:{
+        color: 'purple',
+        fontSize: 18,
+        marginTop: 10,
+        fontWeight: '300',
+    },
+    principal:{
+        letterSpacing: 2,
         color: 'black',
-        fontSize: 15,
-        marginBottom: 10,
+        fontWeight: '300',
+        fontSize: 18,
     },
-    contactos:{
-        color: 'blue',
+    menu:{
+        textAlign: 'center',
+        letterSpacing: 4,
+        color: 'orange',
+        fontWeight: '300',
         fontSize: 20,
-    },
-    favoritos:{
-        color: 'pink',
-        fontSize: 20,
-    },
-    papelera:{
-        color: 'brown',
-        fontSize: 20,
-    },
-    buscar:{
-        color: 'red',
-        fontSize: 20,
+        marginTop: 15,
+        marginRight: 7,
+        padding: 6,
     },
     texto: {
         fontSize: 20,
@@ -50,7 +52,7 @@ const home = StyleSheet.create({
         marginTop: 5,
     },
     footer: {
-        marginTop: 350,
+        marginTop: 400,
         color: 'grey',
     },
     lineaboton: {
@@ -98,18 +100,19 @@ const tarjet = StyleSheet.create({
         fontStyle: 'italic',
         color: 'green',
         fontSize: 25,
-        fontWeight: 'bold',
         marginBottom: 5,
         marginTop: 25,
         flex: 1,
         width: '100%',
         height: '12%',
+        fontWeight: '300',
+        letterSpacing: 3,
     },
     interior: {
         fontStyle: 'italic',
     },
     eliminar: {
-        fontSize: 25,
+        fontSize: 10,
         color: 'red',
         textAlign: 'right',
         fontWeight: 'bold',
@@ -145,6 +148,7 @@ const tarjet = StyleSheet.create({
         flex: 1,
         width: '100%',
         height: '3%',
+        margin: 2,
     },
     boton: {
         textAlign: 'center',
@@ -152,6 +156,25 @@ const tarjet = StyleSheet.create({
         color: 'purple',
         fontSize: 15,
         fontWeight: '500',
+        fontWeight: '300',
+        letterSpacing: 1,
+    },
+    fav: {
+        textAlign: 'center',
+        margin: 4,
+        color: '#b40a0d',
+        fontSize: 13,
+        fontWeight: '500',
+        fontWeight: '300',
+        letterSpacing: 2,
+    },
+    coment: {
+        margin: 4,
+        color: '#E18510',
+        fontSize: 13,
+        fontWeight: '500',
+        fontWeight: '300',
+        letterSpacing: 2,
     },
 })
 
@@ -165,8 +188,9 @@ const papelera = StyleSheet.create({
         justifyContent: 'center',
         color: 'green',
         fontSize: 25,
-        fontWeight: 'bold',
         marginBottom: 10,
+        fontWeight: '300',
+        letterSpacing: 3,
     },
     texto: {
        fontSize: 20,
@@ -188,7 +212,8 @@ const buscar = StyleSheet.create({
         alignItems: 'center',
         color: 'green',
         fontSize: 25,
-        fontWeight: 'bold',
+        fontWeight: '300',
+        letterSpacing: 3,
         marginBottom: 10,
     },
     texto: {
@@ -210,7 +235,8 @@ const importar = StyleSheet.create({
         justifyContent: 'center',
         color: 'green',
         fontSize: 25,
-        fontWeight: 'bold',
+        fontWeight: '300',
+        letterSpacing: 3,
         marginBottom: 10,
     },
     texto: {
@@ -235,7 +261,8 @@ const acerca = StyleSheet.create({
         justifyContent: 'center',
         color: 'green',
         fontSize: 25,
-        fontWeight: 'bold',
+        fontWeight: '300',
+        letterSpacing: 3,
         marginBottom: 10,
     },
     texto: {

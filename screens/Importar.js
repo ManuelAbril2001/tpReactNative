@@ -48,25 +48,30 @@ export class Importar extends Component {
      })
    }
 
+
+// A PAPELERA
    async agregarApapelera(item){ //agrega a fila el contacto seleccionado
     try{
         let result = await AsyncStorage.getItem('papelera')
         result = JSON.parse(result)
-        if (result == null) result=[] 
+        if (result == null) result=[]
         result.push(item)
         const toJSON = JSON.stringify(result)
         await AsyncStorage.setItem('papelera', toJSON)
-        
-        const nuevaLista = this.state.items.filter(itemList => { // elimina el elegido
-            return itemList.login.uuid != item.login.uuid
+        const nuevaLista2 = this.state.items.filter(itemList2 => { // elimina el elegido
+            return itemList2.login.uuid != item.login.uuid
         });
+        console.log(nuevaLista2) // NO LLEGA!!!!!!!!!!     
 
-        this.setState({items: nuevaLista})
-
+        this.setState({items: nuevaLista2})
     }catch(e){
         console.log(e)
     }
 }
+
+// clearAsyncStorage = async() => {
+//     AsyncStorage.clear();
+// }    
 
 
 
@@ -83,7 +88,9 @@ export class Importar extends Component {
 
             <View style={tarjet.todo}>
              <Text style={tarjet.titulo}>Contactos favoritos</Text>
-
+             {/* <TouchableOpacity onPress={() => this.clearAsyncStorage()}><Text>Limpiar memoria</Text></TouchableOpacity> */}
+            <TextInput style={tarjet.detalle} placeholder='Buscar por nombre'></TextInput>
+                                                                            
              <View style={tarjet.flat}>
                 <FlatList data={this.state.fav} renderItem={this.renderItem} keyExtractor={this.keyExtractor}> </FlatList>
              </View>

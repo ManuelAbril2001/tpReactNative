@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Button, TouchableOpacity, Easing, TextInput, TouchableWithoutFeedback, Animated } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity, Easing, TextInput, TouchableWithoutFeedback, Animated } from 'react-native';
 import {home} from '../Estilo/Styles';
 
 export class Home extends Component {
@@ -43,20 +43,21 @@ export class Home extends Component {
                     height:70,
                     textAlign: 'center',
                 }}>
-                    <TouchableOpacity style={{flex:1}} onPress={this.topDown}>
-                    <Text style={home.mover}>Mover menu</Text>
-                    <Text style={home.contactos} onPress={ () => this.props.navigation.navigate('Contactos')}>
+                    <Text style={home.principal}>Menu principal</Text>
+                    <Text style={home.menu} onPress={ () => this.props.navigation.navigate('Contactos')}>
                         Todos los contactos
                     </Text>
-                    <Text style={home.favoritos} onPress={ () => this.props.navigation.navigate('Favoritos')}>
+                    <Text style={home.menu} onPress={ () => this.props.navigation.navigate('Favoritos')}>
                          Favoritos
                     </Text>
-                    <Text style={home.papelera} onPress={ () => this.props.navigation.navigate('Papelera')}>
+                    <Text style={home.menu} onPress={ () => this.props.navigation.navigate('Papelera')}>
                         Papelera de reciclaje
                     </Text>
-                    <Text style={home.buscar} onPress={ () => this.props.navigation.navigate('Buscar')}>
+                    {/* <Text style={home.menu} onPress={ () => this.props.navigation.navigate('Buscar')}>
                         Buscar
-                    </Text>
+                    </Text> */}
+                <TouchableOpacity  onPress={this.topDown}>
+                    <Text style={home.mover}>Mover menu</Text>
                 </TouchableOpacity>
                 </Animated.View>
 

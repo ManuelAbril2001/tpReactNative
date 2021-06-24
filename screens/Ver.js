@@ -61,10 +61,7 @@ class Ver extends Component {
         }
     }
 
-    clearAsyncStorage = async() => {
-        AsyncStorage.clear();
-    }
-
+   
 
 
 render(){
@@ -79,7 +76,6 @@ render(){
                 </View>
        
     <View style={tarjet.todo}>
-        <TouchableOpacity onPress={() => this.clearAsyncStorage()}><Text>Limpiar memoria</Text></TouchableOpacity>
         <Text style={tarjet.titulo}>Tus contactos:</Text>
 
         <TextInput style={{textAlign: 'center'}} placeholder='¿Cuantos contactos queres importar?' keyboardType="numeric"  onChangeText={ (text) => this.fetchAPI(text)}/> 

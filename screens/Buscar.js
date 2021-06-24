@@ -33,59 +33,26 @@ export class Buscar extends Component {
         )
     }
 
+    // filtrarNombre(text){
+    //     if (text.length > 0) {
+    //         let buscarNombre = this.state.items.filter( item => {
+    //             let nombre = item.name.first.toUpperCase();
+    //             let inputTexto = text.toUpperCase();
+    //             return nombre.includes(inputTexto)
+    //         });
+    
+    //         this.setState({
+    //             items: buscarNombre,
+    //             text: text
+    //         })
+    
+    //     } else {
+    //         this.setState({
+    //             items: this.state.tarjetasBuscadas
+    //         })
+    //     }
+    // }
 
-async filtrarNombre(text){
-    try{
-    const filtroNombre = this.state.items.filter(itemList => { 
-                return itemList.name == item.name
-        });
-            this.setState({items: filtroNombre})
-        }catch(e){
-            console.log(e)
-        }
-     
-}
-
-// filtrarApellido(text){
-
-//     if (text.length > 0) {
-//         let buscarApellido = this.state.tarjetas.filter( item => {
-//             let apellido = item.name.last.toUpperCase();
-//             let inputTexto = text.toUpperCase();
-//             return apellido.includes(inputTexto)
-//         });
-
-//         this.setState({
-//             tarjetas: buscarApellido,
-//             text: text,
-//         })
-
-//     }else {
-//         this.setState({
-//             tarjetas: this.state.items
-//         })
-//     }
-// }
-
-// filtrarPais(text){
-//     if (text.length > 0) {
-//         let buscarPais = this.state.tarjetas.filter( item => {
-//             let pais = item.location.country.toUpperCase();
-//             let inputTexto = text.toUpperCase();
-//             return nombre.includes(inputTexto)
-//         });
-
-//         this.setState({
-//             tarjetas: buscarPais,
-//             text: text,
-//         })
-
-//     }else {
-//         this.setState({
-//             tarjetas: this.state.items
-//         })
-//     }
-// }
 
 
 

@@ -53,7 +53,6 @@ class App extends Component{
             <Drawer.Screen name="Favoritos" component={Importar}/>
             <Drawer.Screen name="Papelera" component={Papelera}/>
             <Drawer.Screen name="Acerca de..." component={Acercade}/>
-            <Drawer.Screen name="Buscar" component={Buscar}/>
           </Drawer.Navigator>
         
         </NavigationContainer>

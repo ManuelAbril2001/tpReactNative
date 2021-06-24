@@ -7,14 +7,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export class Papelera extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props);
         this.state={
             fav: [],
             items: [],
             numero: "",
             papelera:[],
+            eliminar: [],
+            itemsBorrados: [],
         }
+        // this.agregarAeliminar = this.agregarAeliminar.bind(this);
     }
 
    async componentDidMount(){
@@ -31,11 +34,14 @@ export class Papelera extends Component {
             console.log(e);
         }
     }
+   
 
     keyExtractor = (item,idx) => idx.toString();
     renderItem= ({item}) => {
         return(
-            <Papelerac item={item}/>
+            <Papelerac item={item} eliminarTarjetas={this.eliminarTarjetas.bind(this)}
+            // agregarAeliminar={this.agregarAeliminar} 
+            />
         )
     }
 
@@ -46,6 +52,38 @@ export class Papelera extends Component {
          this.setState({items:results})
      })
    }
+
+   eliminarTarjetas (item){
+    console.log(item)
+     let resultados = this.state.items.filter(item => {
+    return (item.login.uuid !== items.login.uuid)
+    })
+
+    this.setState({items: resultados})
+
+    alert('Se eliminó tu tarjeta')
+}
+
+//    async agregarAeliminar(item){ //agrega a fila el contacto seleccionado
+//     try{
+//         let result = await AsyncStorage.getItem('papelera')
+//         result = JSON.parse(result)
+//         if (result == null) result=[] 
+//         result.push(item)
+//         const toJSON = JSON.stringify(result)
+//         await AsyncStorage.setItem('papelera', toJSON)
+        
+//         const nuevaLista3 = this.state.items.filter(itemList3 => { // elimina el elegido
+//             return itemList3.login.uuid != item.login.uuid
+//         });
+
+//         this.setState({items: nuevaLista3})
+
+//     }catch(e){
+//         console.log(e)
+//     }
+// }
+
 
 
     render(){

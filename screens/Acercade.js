@@ -23,7 +23,7 @@ export class Acercade extends Component {
                 <Text style={acerca.interior}> Nuestra historia: </Text> Fundado en mayo 2021, socios desde marzo 2019
             </Text>
             <Text style={acerca.texto}> 
-                <Text style={acerca.interior}> Nuestros productos/servicios:</Text> Wxpertos en programacion
+                <Text style={acerca.interior}> Nuestros productos/servicios:</Text> Expertos en programacion
             </Text>
             <Text style={acerca.texto}> 
                 <Text style={acerca.interior}> Casos de éxito: </Text> Programacion 1, 2 y media 3.

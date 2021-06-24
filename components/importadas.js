@@ -20,7 +20,6 @@ class Importadas extends Component{
         }
     }
 
-
     resize = new Animated.Value(0.8);
 
   toSize = () => {
@@ -40,13 +39,13 @@ class Importadas extends Component{
 
 
 render(){
-    const { error, isLoaded } = this.state;
+    const { error, isLoaded, papelera} = this.state;
     const {item} = this.props;
     
     return (
             <View key={item.login.uuid} style={tarjet.container}>
               <View style={tarjet.tarjeta}>
-              <TouchableOpacity  onPress={() => this.agregarPapelera(item)}><Text style={tarjet.boton}> X a papelera </Text></TouchableOpacity>
+              <TouchableOpacity  onPress={() => this.agregarPapelera(item)}><Text style={tarjet.eliminar}> Mandar a papelera </Text></TouchableOpacity>
                   <View style={tarjet.contenido}>
                   <Image style={tarjet.imagen} source={{uri: item.picture.large}}/>
                   <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Nombre: </Text>{item.name.first} </Text> 
@@ -55,9 +54,9 @@ render(){
                   <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Fecha de nacimiento: </Text> {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
     
                 
-                <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver detalle del contacto </Text>
-                <Text style={tarjet.detalle}>Comentarios:</Text>
-                <TextInput style={{textAlign: 'center'}} placeholder='Dejá tu comentario acá' onChangeText={texto => this.setState({comentarios: texto})}/> 
+                <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver más detalles </Text>
+                <Text style={tarjet.coment}>Comentarios:</Text>
+                <TextInput style={{paddingBottom: 6}} placeholder='Dejá tu comentario acá' onChangeText={texto => this.setState({comentarios: texto})}/> 
               </View>
     
               <Modal visible={this.state.showModal} animationType="slide">

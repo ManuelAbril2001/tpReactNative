@@ -5,8 +5,8 @@ import {getData} from "../api/RandomUser";
 import {tarjet} from '../Estilo/Styles';
 
 class Papelera extends Component{
-    constructor(){
-        super()
+    constructor(props){;
+        super(props);
         this.state={
           error: null,
           isLoaded: false,
@@ -15,6 +15,8 @@ class Papelera extends Component{
           showModal: false,
           toValue: 1,
           comentarios: [],
+          papelera: [],
+          // eliminar: [],
         }
     }
 
@@ -31,6 +33,11 @@ class Papelera extends Component{
       this.setState({toValue: this.state.toValue==0.8? 1 : 0.8})
   }
 
+  // agregarEliminar (item){
+  //   this.props.agregarAeliminar(item);
+  //   alert('Tarjeta eliminada 4ever')
+  // }
+
 
 render(){
     const { error, isLoaded } = this.state;
@@ -39,7 +46,9 @@ render(){
     return (
             <View key={item.login.uuid} style={tarjet.container}>
               <View style={tarjet.tarjeta}>
-              <TouchableOpacity><Text style={tarjet.boton}> X 4ever </Text></TouchableOpacity>
+              <TouchableOpacity onPress= {this.props.eliminarTarjetas.bind(this,item.login.uuid)}
+              // onPress={() => this.agregarEliminar(item)}
+              ><Text style={tarjet.eliminar}> Eliminar definitivamente </Text></TouchableOpacity>
                   <View style={tarjet.contenido}>
                   <Image style={tarjet.imagen} source={{uri: item.picture.large}}/>
                   <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Nombre: </Text>{item.name.first} </Text> 
@@ -48,10 +57,8 @@ render(){
                   <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Fecha de nacimiento: </Text> {item.dob.date.substring(0,10)} ({item.dob.age}) </Text>
     
                 
-                <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver detalle del contacto </Text>
-                <Text style={tarjet.detalle}>Comentarios:</Text>
-                <TextInput style={{textAlign: 'center'}} placeholder='Dejá tu comentario acá' onChangeText={texto => this.setState({comentarios: texto})}/> 
-              </View>
+                <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver más detalles </Text>
+                </View>
     
               <Modal visible={this.state.showModal} animationType="slide">
               <View style={tarjet.verdetalle}>
