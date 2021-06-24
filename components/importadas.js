@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {Component} from 'react';
-import { StyleSheet, Image, Text,  Animated, Easing, View, TextInput, Alert, TouchableWithoutFeedback, TouchableOpacity, Separator, Button, Modal } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Image, Text, Form, Animated, Easing, View, TextInput, Alert, TouchableWithoutFeedback, TouchableOpacity, Separator, Button, Modal } from 'react-native';
 import {getData} from "../api/RandomUser";
 import {tarjet} from '../Estilo/Styles';
 
@@ -56,7 +57,8 @@ render(){
                 
                 <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver más detalles </Text>
                 <Text style={tarjet.coment}>Comentarios:</Text>
-                <TextInput style={{paddingBottom: 6}} placeholder='Dejá tu comentario acá' onChangeText={texto => this.setState({comentarios: texto})}/> 
+                <TextInput style={{paddingBottom: 6}} placeholder='Dejá tu comentario acá'/> 
+               
               </View>
     
               <Modal visible={this.state.showModal} animationType="slide">

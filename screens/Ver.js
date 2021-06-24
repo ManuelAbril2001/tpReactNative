@@ -21,8 +21,7 @@ class Ver extends Component {
             fav:[]
 
         }
-        this.agregarAseleccion = this.agregarAseleccion.bind(this);
-        
+        this.agregarAseleccion = this.agregarAseleccion.bind(this);        
     }
 
 
@@ -61,9 +60,8 @@ class Ver extends Component {
         }
     }
 
-    //filtros
-    filtrarNombre(text){
-
+// //filtros
+    filtrarPorNombre(text){
         if (text.length > 0) {
             let buscarNombre = this.state.items.filter( item => {
                 let nombre = item.name.first.toUpperCase();
@@ -82,8 +80,8 @@ class Ver extends Component {
             })
         }
     }
-    filtrarApellido(text){
-    
+
+    filtrarPorApellido(text){
         if (text.length > 0) {
             let buscarApellido = this.state.items.filter( item => {
                 let apellido = item.name.last.toUpperCase();
@@ -102,8 +100,8 @@ class Ver extends Component {
             })
         }
     }
-    filtrarPais(text){
-    
+
+    filtrarPorPais(text){
         if (text.length > 0) {
             let buscarPais = this.state.items.filter( item => {
                 let pais = item.location.country.toUpperCase();
@@ -122,8 +120,8 @@ class Ver extends Component {
             })
         }
     }
-    filtrarCiudad(text){
-    
+
+    filtrarPorCiudad(text){
         if (text.length > 0) {
             let buscarCiudad = this.state.items.filter( item => {
                 let ciudad = item.location.city.toUpperCase();
@@ -162,13 +160,14 @@ render(){
 
         <TextInput style={{textAlign: 'center'}} placeholder='¿Cuantos contactos queres importar?' keyboardType="numeric"  onChangeText={ (text) => this.fetchAPI(text)}/> 
         
-        <Text style={{textAlign: 'center'}} >Buscar Tarjetas</Text>
-            <TextInput style={{textAlign: 'center'}} placeholder="Nombre" onChangeText={ (text) => this.filtrarNombre(text)}></TextInput>
-            <TextInput style={{textAlign: 'center'}} placeholder="Apellido" onChangeText={ (text) => this.filtrarApellido(text)}></TextInput>
-            <TextInput style={{textAlign: 'center'}} placeholder="País" onChangeText={ (text) => this.filtrarPais(text)}></TextInput>
-            <TextInput style={{textAlign: 'center'}} placeholder="Ciudad" onChangeText={ (text) => this.filtrarCiudad(text)}></TextInput>
-
+        
         <View style={tarjet.flat}>
+        <Text style={tarjet.coment}>Buscar Tarjetas</Text>
+            <TextInput placeholder="Nombre" onChangeText={ (text) => this.filtrarPorNombre(text)}></TextInput>
+            <TextInput placeholder="Apellido" onChangeText={ (text) => this.filtrarPorApellido(text)}></TextInput>
+            <TextInput placeholder="País" onChangeText={ (text) => this.filtrarPorPais(text)}></TextInput>
+            <TextInput placeholder="Ciudad" onChangeText={ (text) => this.filtrarPorCiudad(text)}></TextInput>
+
             <FlatList data={this.state.items} renderItem={this.renderItem} keyExtractor={this.keyExtractor}> </FlatList>
         </View>
         
