@@ -35,7 +35,7 @@ class Importadas extends Component{
 
   agregarPapelera (item){
     this.props.agregarApapelera(item);
-    alert('Tarjeta eliminada a papelera')
+    Alert.alert('Tarjeta a papelera')
   }
 
 

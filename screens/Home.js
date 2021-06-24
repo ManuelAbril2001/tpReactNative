@@ -16,10 +16,8 @@ export class Home extends Component {
     topDown = () => {
         Animated.timing(this.position,{
             toValue: this.state.toValue,
-            duration: 1000, 
-            //un segundo
-            useNativeDriver: false,
-            //obligatorio
+            duration: 1000, //un segundo
+            useNativeDriver: false, //obligatorio
             easing: Easing.bounce,
         }).start();
      this.setState({toValue: this.state.toValue==10? 200 : 10})

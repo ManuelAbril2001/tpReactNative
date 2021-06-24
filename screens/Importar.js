@@ -58,7 +58,7 @@ export class Importar extends Component {
         result.push(item)
         const toJSON = JSON.stringify(result)
         await AsyncStorage.setItem('papelera', toJSON)
-        const nuevaLista2 = this.state.items.filter(itemList2 => { // elimina el elegido
+        const nuevaLista2 = this.state.fav.filter(itemList2 => { // elimina el elegido
             return itemList2.login.uuid != item.login.uuid
         });
         console.log(nuevaLista2) // NO LLEGA!!!!!!!!!!     
@@ -72,87 +72,6 @@ export class Importar extends Component {
 // clearAsyncStorage = async() => {
 //     AsyncStorage.clear();
 // }    
-
-//filtros
-// filtrarPorNombre(text){
-//     if (text.length > 0) {
-//         let buscarNombre = this.state.items.filter( item => {
-//             let nombre = item.name.first.toUpperCase();
-//             let inputTexto = text.toUpperCase();
-//             return nombre.includes(inputTexto)
-//         });
-
-//         this.setState({
-//             items: buscarNombre,
-//             text: text
-//         })
-
-//     } else {
-//         this.setState({
-//             items: this.state.tarjetasBuscadas
-//         })
-//     }
-// }
-
-// filtrarPorApellido(text){
-//     if (text.length > 0) {
-//         let buscarApellido = this.state.items.filter( item => {
-//             let apellido = item.name.last.toUpperCase();
-//             let inputTexto = text.toUpperCase();
-//             return apellido.includes(inputTexto)
-//         });
-
-//         this.setState({
-//             items: buscarApellido,
-//             text: text,
-//         })
-
-//     }else {
-//         this.setState({
-//             items: this.state.items
-//         })
-//     }
-// }
-
-// filtrarPorPais(text){
-//     if (text.length > 0) {
-//         let buscarPais = this.state.items.filter( item => {
-//             let pais = item.location.country.toUpperCase();
-//             let inputTexto = text.toUpperCase();
-//             return pais.includes(inputTexto)
-//         });
-
-//         this.setState({
-//             items: buscarPais,
-//             text: text,
-//         })
-
-//     }else {
-//         this.setState({
-//             items: this.state.items
-//         })
-//     }
-// }
-
-// filtrarPorCiudad(text){
-//     if (text.length > 0) {
-//         let buscarCiudad = this.state.items.filter( item => {
-//             let ciudad = item.location.city.toUpperCase();
-//             let inputTexto = text.toUpperCase();
-//             return ciudad.includes(inputTexto)
-//         });
-
-//         this.setState({
-//             items: buscarCiudad,
-//             text: text,
-//         })
-
-//     }else {
-//         this.setState({
-//             items: this.state.items
-//         })
-//     }
-// }
 
 
     render(){
@@ -171,12 +90,6 @@ export class Importar extends Component {
              {/* <TouchableOpacity onPress={() => this.clearAsyncStorage()}><Text>Limpiar memoria</Text></TouchableOpacity> */}
                                                                                         
              <View style={tarjet.flat}>
-             {/* <Text style={tarjet.coment}>Buscar Tarjetas</Text>
-            <TextInput placeholder="Nombre" onChangeText={ (text) => this.filtrarPorNombre(text)}></TextInput>
-            <TextInput placeholder="Apellido" onChangeText={ (text) => this.filtrarPorApellido(text)}></TextInput>
-            <TextInput placeholder="País" onChangeText={ (text) => this.filtrarPorPais(text)}></TextInput>
-            <TextInput placeholder="Ciudad" onChangeText={ (text) => this.filtrarPorCiudad(text)}></TextInput> */}
-
                 <FlatList data={this.state.fav} renderItem={this.renderItem} keyExtractor={this.keyExtractor}> </FlatList>
              </View>
 

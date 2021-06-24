@@ -163,11 +163,11 @@ render(){
         
         
         <View style={tarjet.flat}>
-        <Text style={tarjet.coment}>Buscar Tarjetas</Text>
-            <TextInput style={{textAlign: 'center'}} placeholder="Buscar por nombre" onChangeText={ (text) => this.filtrarPorNombre(text)}></TextInput>
-            <TextInput style={{textAlign: 'center'}} placeholder="Buscar por apellido" onChangeText={ (text) => this.filtrarPorApellido(text)}></TextInput>
-            <TextInput style={{textAlign: 'center'}} placeholder="Buscar por pais" onChangeText={ (text) => this.filtrarPorPais(text)}></TextInput>
-            <TextInput style={{textAlign: 'center'}} placeholder="Buscar por ciudad" onChangeText={ (text) => this.filtrarPorCiudad(text)}></TextInput>
+        <Text style={tarjet.coment}>Buscar contacto</Text>
+            <TextInput placeholder="Por nombre" onChangeText={ (text) => this.filtrarPorNombre(text)}></TextInput>
+            <TextInput placeholder="Por apellido" onChangeText={ (text) => this.filtrarPorApellido(text)}></TextInput>
+            <TextInput placeholder="Por pais" onChangeText={ (text) => this.filtrarPorPais(text)}></TextInput>
+            <TextInput placeholder="Por ciudad" onChangeText={ (text) => this.filtrarPorCiudad(text)}></TextInput>
 
             <FlatList data={this.state.items} renderItem={this.renderItem} keyExtractor={this.keyExtractor}> </FlatList>
         </View>

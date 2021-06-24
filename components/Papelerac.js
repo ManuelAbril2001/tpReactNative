@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {Component} from 'react';
 import { StyleSheet, Image, Text,  Animated, Easing, View, TextInput, Alert, TouchableWithoutFeedback, TouchableOpacity, Separator, Button, Modal } from 'react-native';
+import { Value } from 'react-native-reanimated';
 import {getData} from "../api/RandomUser";
 import {tarjet} from '../Estilo/Styles';
 
@@ -33,10 +34,21 @@ class Papelera extends Component{
       this.setState({toValue: this.state.toValue==0.8? 1 : 0.8})
   }
 
-  // agregarEliminar (item){
-  //   this.props.agregarAeliminar(item);
-  //   alert('Tarjeta eliminada 4ever')
-  // }
+
+  async eliminarTarjeta(){
+    Alert.alert('Tarjeta eliminada definitivamente')
+    try{
+      let resultado = this.state.papelera.filter((item) => {
+        return item.login.uuid != value.login.uuid
+      })
+      this.setState({papelera: resultado})
+
+      const jsonValue = JSON.stringify(resultaado)
+      await AsyncStorage.setItem('papelera', jsonValue)
+    }catch(e){
+      console.log(e);
+    }
+  }
 
 
 render(){
@@ -46,10 +58,7 @@ render(){
     return (
             <View key={item.login.uuid} style={tarjet.container}>
               <View style={tarjet.tarjeta}>
-              <TouchableOpacity 
-              // onPress= {this.props.eliminarTarjetas.bind(this,item.login.uuid)}
-              // onPress={() => this.agregarEliminar(item)}
-              ><Text style={tarjet.eliminar}> Eliminar definitivamente </Text></TouchableOpacity>
+              <TouchableOpacity onPress={() => this.eliminarTarjeta(item)}><Text style={tarjet.eliminar}> Eliminar definitivamente </Text></TouchableOpacity>
                   <View style={tarjet.contenido}>
                   <Image style={tarjet.imagen} source={{uri: item.picture.large}}/>
                   <Text style={tarjet.detalle}> <Text style={tarjet.interior}> Nombre: </Text>{item.name.first} </Text> 

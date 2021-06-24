@@ -39,7 +39,7 @@ componentDidMount() {
 
   agregarFavoritos (item){
     this.props.agregarAseleccion(item);
-    alert('Tarjeta guardada')
+    Alert.alert('Tarjeta guardada')
   }
 
 
