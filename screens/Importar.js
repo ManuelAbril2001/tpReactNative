@@ -61,7 +61,7 @@ export class Importar extends Component {
         const nuevaLista2 = this.state.fav.filter(itemList2 => { // elimina el elegido
             return itemList2.login.uuid != item.login.uuid
         });
-        console.log(nuevaLista2) // NO LLEGA!!!!!!!!!!     
+        console.log(nuevaLista2) // NO LLEGA!!!!!!!!!!
 
         this.setState({items: nuevaLista2})
     }catch(e){
