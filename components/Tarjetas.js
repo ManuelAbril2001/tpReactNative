@@ -60,7 +60,7 @@ return (
             
             <Text style={tarjet.boton} title="Ver detalle del contacto" onPress={()=> this.setState({showModal: !this.state.showModal})}> Ver más detalles </Text>
 
-            <TouchableOpacity  onPress={() => this.agregarFavoritos(item)}><Text style={tarjet.fav}> Agregar a favoritos </Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => this.agregarFavoritos(item)}><Text style={tarjet.fav}> Agregar a favoritos </Text></TouchableOpacity>
           </View>
 
           <Modal visible={this.state.showModal} animationType="slide">

@@ -51,9 +51,6 @@ export class Home extends Component {
                     <Text style={home.menu} onPress={ () => this.props.navigation.navigate('Papelera')}>
                         Papelera de reciclaje
                     </Text>
-                    {/* <Text style={home.menu} onPress={ () => this.props.navigation.navigate('Buscar')}>
-                        Buscar
-                    </Text> */}
                 <TouchableOpacity  onPress={this.topDown}>
                     <Text style={home.mover}>Mover menu</Text>
                 </TouchableOpacity>

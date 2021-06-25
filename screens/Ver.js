@@ -76,7 +76,7 @@ class Ver extends Component {
     
         } else {
             this.setState({
-                items: this.state.tarjetasBuscadas
+                items: this.state.items
             })
         }
     }
