@@ -32,7 +32,7 @@ componentDidMount() {
           tension: 10,
           useNativeDriver: false,
       }).start();
-      this.setState({toValue: this.state.toValue==0.8? 1 : 0.8})
+      this.({toValue: this.state.toValue==0.8? 1 : 0.8})
   }
 
 
